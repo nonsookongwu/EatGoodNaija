@@ -1,8 +1,13 @@
 import React from 'react'
+import CustomButton from '../components/button'
+import NavBar from '../components/navbar'
 
 const LandingPage = () => {
   return (
-    <div>LandingPage</div>
+    <div>
+      {/* <CustomButton children="Get Started" /> */}
+      <NavBar/>
+    </div>
   )
 }
 
