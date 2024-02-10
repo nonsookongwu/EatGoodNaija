@@ -1,50 +1,103 @@
-import React from "react";
+import React, { useState } from "react";
+import { FaTimes, FaBars } from "react-icons/fa";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { LiaTimesSolid } from "react-icons/lia";
+import { IconContext } from "react-icons/lib";
 import {
   Logo,
   NavContainer,
+  MobileIcon,
   NavElements,
   NavMenu,
   Navigation,
+  DesktopButton,
+  NavLinks,
 } from "./Navbar.styles";
 import { EGNLogo } from "../../assets";
 import CustomButton from "../button";
+import { DefaultTheme } from "styled-components";
+
 import { NavLink } from "react-router-dom";
+import { color } from "../../theme/color";
 
 const NavBar = () => {
   const navElements = [
     { label: "Home", href: "/" },
-    { label: "Services", href: "/" },
-    { label: "Menu", href: "/" },
-    { label: "Contact", href: "/" },
+    { label: "Services", href: "/services" },
+    { label: "Menu", href: "/menu" },
+    { label: "Contact", href: "/contact" },
   ];
 
+  const [openMobile, setOpenMobile] = useState(false);
+  const [active, setActive] = useState(0);
+
+  const handleOpenMobile = () => {
+    setOpenMobile(!openMobile);
+  };
+
+  const handleActive = (index: number) => {
+    setActive(index);
+    console.log(index);
+  };
+
   return (
-    <NavContainer>
-      <Logo src={EGNLogo} />
-      <Navigation>
-        <NavMenu>
-          {/* {navElements.map((navElement) => (
-            <NavLink to={`${navElement.href}`} key={navElement.label}>
-              <NavElements>{navElement.label}</NavElements>
-            </NavLink>
-          ))} */}
-          <NavLink to={"/"}>
-            <NavElements>Home</NavElements>
-          </NavLink>
-          <NavLink to={""}>
-            <NavElements>Services</NavElements>
-          </NavLink>
-          <NavLink to={""}>
-            <NavElements>Menu</NavElements>
-          </NavLink>
-          <NavLink to={""}>
-            <NavElements>Contact</NavElements>
-          </NavLink>
-        </NavMenu>
-        <CustomButton children="Sign Up" />
-      </Navigation>
-    </NavContainer>
+    <IconContext.Provider value={{ color: `${color.primary.bleuDeFrance}` }}>
+      <NavContainer>
+        <NavLink to={"/"} onClick={() => handleActive(0)}>
+          <Logo src={EGNLogo} />
+        </NavLink>
+        <Navigation>
+          <MobileIcon onClick={handleOpenMobile}>
+            {openMobile ? <LiaTimesSolid /> : <RxHamburgerMenu />}
+          </MobileIcon>
+          <NavMenu mobileopen={openMobile} onClick={handleOpenMobile}>
+            {/* <NavLinks to={"/"}>
+              <NavElements
+                onClick={() => handleActive(0)}
+                activeclass={active === 0}
+              >
+                Home
+              </NavElements>
+            </NavLinks>
+            <NavElements
+              onClick={() => handleActive(1)}
+              activeclass={active === 1}
+            >
+              <NavLinks to={"/services"}>Services</NavLinks>
+            </NavElements>
+            <NavElements
+              onClick={() => handleActive(2)}
+              activeclass={active === 2}
+            >
+              <NavLinks to={"/"}>Menu</NavLinks>
+            </NavElements>
+            <NavElements
+              onClick={() => handleActive(3)}
+              activeclass={active === 3}
+            >
+              <NavLinks to={"/"}>Contact</NavLinks>
+            </NavElements> */}
+
+            {navElements.map((navElement, index) => (
+              <NavLink to={`${navElement.href}`} key={navElement.label}>
+                <NavElements
+                  activeclass={active === index}
+                  onClick={() => handleActive(index)}
+                >
+                  {navElement.label}
+                </NavElements>
+              </NavLink>
+            ))}
+          </NavMenu>
+          <DesktopButton>
+            <CustomButton children="Sign Up" />
+          </DesktopButton>
+        </Navigation>
+      </NavContainer>
+    </IconContext.Provider>
   );
 };
 
 export default NavBar;
+
+

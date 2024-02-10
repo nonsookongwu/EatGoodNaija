@@ -1,12 +1,11 @@
-import React from 'react'
-import CustomButton from '../components/button'
+import { Outlet } from 'react-router-dom'
 import NavBar from '../components/navbar'
 
 const LandingPage = () => {
   return (
     <div>
-      {/* <CustomButton children="Get Started" /> */}
-      <NavBar/>
+      <NavBar />
+      <Outlet/>
     </div>
   )
 }

@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { fonts } from "../../theme/fonts";
 import { color } from "../../theme/color";
+import { Link, NavLink } from "react-router-dom";
 
-export const NavContainer = styled.div`
+export const NavContainer = styled.nav`
   /* background-color: red; */
   border: 2px solid red;
   width: 100%;
@@ -10,7 +11,11 @@ export const NavContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  @media screen and (max-width: 960px) {
+    justify-content: space-between;
+  }
 `;
+
 export const Logo = styled.img`
   width: auto;
 `;
@@ -22,29 +27,116 @@ export const Navigation = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* @media screen and (max-width: 960px) {
+    display: none;
+  } */
 `;
 
+interface NavMenuProps {
+  mobileopen: boolean;
+}
 
-export const NavMenu = styled.div`
+export const NavMenu = styled.ul<NavMenuProps>`
   border: 2px solid red;
   width: 371px;
   height: 23px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+
+  @media screen and (max-width: 960px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 60vh;
+    position: absolute;
+    top: 80px;
+    left: ${(props) => (props.mobileopen ? 0 : "-100%")};
+    opacity: 1;
+    transition: all 0.5s ease;
+    background: #101522;
+    box-sizing: border-box;
+    padding: 0;
+  }
 `;
 
-export const NavElements = styled.div`
+
+
+interface NavElementProps {
+  activeclass: boolean;
+}
+
+export const NavElements = styled.li<NavElementProps>`
   font-family: ${fonts.fontFamily.poppins};
-  font-weight: ${fonts.fontWeight.medium};
   font-size: ${fonts.fontSize.body2};
+  font-weight: ${(props) =>
+    props.activeclass
+      ? `${fonts.fontWeight.regular}`
+      : `${fonts.fontWeight.medium}`};
   line-height: ${fonts.lineHeight.body3};
   letter-spacing: ${fonts.letterSpacing.body};
-  color: ${color.black.darkCharcoal};
   cursor: pointer;
+  color: ${(props) =>
+    props.activeclass
+      ? `${color.primary.bleuDeFrance}`
+      : `${color.black.darkCharcoal}`};
+  text-decoration: none !important;
 
-  &:active {
+  &:hover {
     font-weight: ${fonts.fontWeight.regular};
     color: ${color.primary.bleuDeFrance};
+  }
+
+  /* &:active {
+    font-weight: ${fonts.fontWeight.regular};
+    color: ${color.primary.bleuDeFrance};
+  } */
+
+  @media screen and (max-width: 960px) {
+    width: 100%;
+    color: ${color.white.white};
+    &:hover {
+      border: none;
+    }
+  }
+`;
+
+export const DesktopButton = styled.div`
+  display: block;
+
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
+`;
+
+export const NavLinks = styled(NavLink)`
+  text-decoration: none;
+  color: ${color.black.darkCharcoal};
+
+  @media screen and (max-width: 960px) {
+    text-align: center;
+    padding: 2rem;
+    width: 100%;
+    display: table;
+    color: ${color.white.white};
+  }
+
+`;
+
+export const MobileIcon = styled.div`
+  display: none;
+
+  @media screen and (max-width: 960px) {
+    /* background: red; */
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+    cursor: pointer;
   }
 `;
