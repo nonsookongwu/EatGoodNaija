@@ -13,6 +13,8 @@ export const fonts = {
   },
 
   fontSize: {
+    rubik: "73px",
+    lobster:"80px",
     display1: "60px",
     display2: "45px",
     heading1: "38px",
@@ -29,9 +31,9 @@ export const fonts = {
   lineHeight: {
     display1: "78px",
     display2: "64px",
-    heading1: "auto",
-    heading2: "auto",
-    heading3: "32px",
+    heading1: "60px",
+    heading2: "52px",
+    heading3: "30px",
     body3: "22px",
     footer1: "18px",
     footer2: "16px",

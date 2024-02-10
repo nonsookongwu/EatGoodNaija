@@ -5,12 +5,12 @@ import { Link, NavLink } from "react-router-dom";
 
 export const NavContainer = styled.nav`
   /* background-color: red; */
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 100%;
   height: 78px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   @media screen and (max-width: 960px) {
     justify-content: space-between;
   }
@@ -21,15 +21,16 @@ export const Logo = styled.img`
 `;
 
 export const Navigation = styled.div`
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   width: 560px;
   height: 46px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* @media screen and (max-width: 960px) {
-    display: none;
-  } */
+  @media screen and (max-width: 960px) {
+    justify-content: center;
+    gap: 20px;
+  }
 `;
 
 interface NavMenuProps {
@@ -37,7 +38,7 @@ interface NavMenuProps {
 }
 
 export const NavMenu = styled.ul<NavMenuProps>`
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 371px;
   height: 23px;
   display: flex;
@@ -51,15 +52,27 @@ export const NavMenu = styled.ul<NavMenuProps>`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 60vh;
+    height: 70vh;
     position: absolute;
     top: 80px;
     left: ${(props) => (props.mobileopen ? 0 : "-100%")};
     opacity: 1;
     transition: all 0.5s ease;
-    background: #101522;
+    background: ${color.black.darkCharcoal};
     box-sizing: border-box;
-    padding: 0;
+    padding: 10px;
+
+    &:hover{
+      background-color: ${color.primary.bleuDeFrance};
+    }
+  }
+`;
+
+export const MobileButton = styled.div`
+  display: none;
+
+  @media screen and (max-width: 960px){
+display: block;
   }
 `;
 
@@ -133,8 +146,8 @@ export const MobileIcon = styled.div`
     /* background: red; */
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 3px;
+    right: 20px;
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;

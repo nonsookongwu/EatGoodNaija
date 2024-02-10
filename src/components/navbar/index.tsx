@@ -12,6 +12,7 @@ import {
   Navigation,
   DesktopButton,
   NavLinks,
+  MobileButton,
 } from "./Navbar.styles";
 import { EGNLogo } from "../../assets";
 import CustomButton from "../button";
@@ -88,6 +89,9 @@ const NavBar = () => {
                 </NavElements>
               </NavLink>
             ))}
+            <MobileButton>
+              <CustomButton children="Sign Up" />
+            </MobileButton>
           </NavMenu>
           <DesktopButton>
             <CustomButton children="Sign Up" />
