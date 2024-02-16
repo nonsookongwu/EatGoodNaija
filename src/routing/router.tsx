@@ -4,6 +4,7 @@ import Services from "../pages/Services";
 import Menu from "../pages/Menu";
 import Contact from "../pages/Contact";
 import App from "../App";
+import SignUpPage from "../pages/signUp/SignUp";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
       { path: "contact", element: <Contact /> },
     ],
   },
+  {path: "/signup", element:<SignUpPage/>}
 ]);
 
 export default router;

@@ -18,7 +18,7 @@ import { EGNLogo } from "../../assets";
 import CustomButton from "../button";
 import { DefaultTheme } from "styled-components";
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { color } from "../../theme/color";
 
 const NavBar = () => {
@@ -90,11 +90,15 @@ const NavBar = () => {
               </NavLink>
             ))}
             <MobileButton>
-              <CustomButton children="Sign Up" />
+              <Link to={"/signup"}>
+                <CustomButton children="Sign Up" />
+              </Link>
             </MobileButton>
           </NavMenu>
           <DesktopButton>
-            <CustomButton children="Sign Up" />
+            <Link to={"/signup"}>
+              <CustomButton children="Sign Up" />
+            </Link>
           </DesktopButton>
         </Navigation>
       </NavContainer>

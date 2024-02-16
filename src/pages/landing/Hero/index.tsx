@@ -31,7 +31,7 @@ const Hero = () => {
           Our job is to filling your tummy with delicious food and with fast and
           free delivery
         </SubtitleText>
-        <CustomButton children="Get Started"/>
+        <CustomButton>Get started</CustomButton>
       </HeroLeftContainer>
       <HeroRightContainer></HeroRightContainer>
     </HeroContainer>

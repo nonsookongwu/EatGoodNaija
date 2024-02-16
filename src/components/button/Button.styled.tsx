@@ -5,6 +5,7 @@ import { color } from "../../theme/color";
 interface ButtonProps {
   bgColor: string;
   disabled?: boolean;
+  width?: string;
 }
 
 export const ButtonStyle = styled.button<ButtonProps>`
@@ -29,6 +30,7 @@ export const ButtonStyle = styled.button<ButtonProps>`
   /* line-height: ${fonts.lineHeight.heading3}; */
   letter-spacing: ${fonts.letterSpacing.body};
   /* margin: 10px; */
+  width: ${(props)=>props.width};
 
   &:hover {
     opacity: 0.9;
