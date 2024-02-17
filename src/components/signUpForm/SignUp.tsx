@@ -39,13 +39,6 @@ const signUp = () => {
     control,
     formState: { errors, isSubmitting },
   } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
-
-  // const validatePhoneNumber = (phoneNumber: string) => {
-  //   const phoneNumberPattern = /^\d{10}$/; // Validates a 10-digit phone number
-
-  //   return phoneNumberPattern.test(phoneNumber);
-  // };
-
   
 
   const handlePassword = () => {
@@ -112,7 +105,6 @@ const signUp = () => {
               <PhoneInput
                 {...field}
                 country={"ng"}
-                placeholder="SuccessMomodu@gmail.com"
               />
             )}
           />
@@ -184,7 +176,9 @@ const signUp = () => {
         )}
       </FieldContainer>
 
-      <CustomButton width="100%" disabled={disabled}>
+      <CustomButton width="100%"
+        // disabled={disabled}
+      >
         Sign up
       </CustomButton>
       <DownTextContainer>

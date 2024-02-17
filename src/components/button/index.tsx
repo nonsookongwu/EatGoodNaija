@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react'
 import { ButtonStyle } from './Button.styled'
 import { color } from '../../theme/color'
 
-interface Props{
+interface Props {
   disabled?: boolean;
   children: ReactNode;
   width?: string;

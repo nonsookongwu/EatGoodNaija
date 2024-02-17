@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { signUp_image } from "../../assets";
 import { fonts } from "../../theme/fonts";
 import { color } from "../../theme/color";
@@ -78,12 +78,24 @@ export const CompanyLogo = styled.img`
 `;
 
 export const SignupInnerUp = styled.div`
-  width: 51.2%;
-  height: 9.44%;
+  width: 71.2%;
+  height: 15.44%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  /* background: yellowgreen; */
+  /* border: 2px solid red; */
+  margin-top: 80px;
+`;
+export const TitleHolder = styled.div`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
   /* background: yellowgreen; */
   /* border: 2px solid yellowgreen; */
 `;
@@ -112,7 +124,6 @@ export const TopText = styled.div`
   /* border: 2px solid blue; */
 
   @media screen and (max-width: 1440px) {
-    
     font-size: ${fonts.fontSize.body2};
     line-height: ${fonts.lineHeight.body3};
   }
@@ -141,8 +152,6 @@ export const TopText = styled.div`
     line-height: ${fonts.lineHeight.body3};
   }
 `;
-
-
 
 export const GoogleAuthButton = styled.button`
   width: 100%;
@@ -174,8 +183,6 @@ export const GoogleAuthButton = styled.button`
   }
 `;
 
-
-
 export const Divider = styled.div`
   width: 100%;
   display: flex;
@@ -189,7 +196,6 @@ export const Line = styled.div`
   border: 1px solid ${color.black.cadetGrey};
 `;
 
-
 export const DividerText = styled.div`
   /* font-family: ${fonts.fontFamily.rubik}; */
   font-size: ${fonts.fontSize.body3};
@@ -197,4 +203,27 @@ export const DividerText = styled.div`
   line-height: ${fonts.lineHeight.footer1};
   letter-spacing: ${fonts.letterSpacing.body};
   color: ${color.black.cadetGrey};
-  `
+`;
+
+
+export const InfoText = styled.span`
+  font-size: ${fonts.fontSize.footer1};
+  font-weight: ${fonts.fontWeight.regular};
+  line-height: ${fonts.lineHeight.footer2};
+  letter-spacing: ${fonts.letterSpacing.body};
+  color: ${color.black.spanishGray};
+  text-align: center;
+
+  @media screen and (max-width: 2560px) {
+    font-size: ${fonts.fontSize.body1};
+    line-height: ${fonts.lineHeight.body3};
+  }
+  @media screen and (max-width: 1440px) {
+    font-size: ${fonts.fontSize.footer1};
+    line-height: ${fonts.lineHeight.footer2};
+  }
+  @media screen and (max-width: 430px) {
+    font-size: ${fonts.fontSize.footer2};
+    line-height: ${fonts.lineHeight.footer2};
+  }
+`;

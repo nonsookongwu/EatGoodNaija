@@ -14,3 +14,11 @@ export const signUpSchema = z
   });
 
 export type TSignUpSchema = z.infer<typeof signUpSchema>;
+
+
+
+// const validatePhoneNumber = (phoneNumber: string) => {
+  //   const phoneNumberPattern = /^\d{10}$/; // Validates a 10-digit phone number
+
+  //   return phoneNumberPattern.test(phoneNumber);
+  // };

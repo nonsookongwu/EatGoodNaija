@@ -129,7 +129,6 @@ export const IconImg = styled.img`
   }
 `;
 
-
 export const Icon = styled.div`
   width: 24px;
   height: 24px;
@@ -160,16 +159,16 @@ export const InputContainer = styled.div`
   background-color: ${color.black.cultured};
 
   @media screen and (max-width: 2560px) {
-     height: 60px;
+    height: 60px;
   }
   @media screen and (max-width: 1440px) {
     height: 40px;
   }
   @media screen and (max-width: 1024px) {
-     height: 40px;
+    height: 40px;
   }
   @media screen and (max-width: 430px) {
-     height: 35px;
+    height: 35px;
   }
 `;
 

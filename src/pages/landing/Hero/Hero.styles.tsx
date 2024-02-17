@@ -260,16 +260,16 @@ export const SubtitleText = styled.div`
 
 //   }
 
-//   @media screen and (max-width: 1024px) {
+  // @media screen and (max-width: 1024px) {
 
-//   }
+  // }
 
-//   @media screen and (max-width: 768px) {
+  // @media screen and (max-width: 768px) {
 
-//   }
+  // }
 
-//   @media screen and (max-width: 430px) {
-//   }
+  // @media screen and (max-width: 430px) {
+  // }
 
-//   @media screen and (max-width: 375px) {
-//   }
+  // @media screen and (max-width: 375px) {
+  // }
