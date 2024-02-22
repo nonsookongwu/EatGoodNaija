@@ -222,12 +222,7 @@ export const SubtitleText = styled.div`
   height: 60px;
   /* border: 2px solid blue; */
 
-  /* @media screen and (max-width: 2560px) {
-    width: 70%;
-    height: 60px;
-    font-size: ${fonts.fontSize.heading2};
-    line-height: ${fonts.lineHeight.heading1};
-  } */
+  
 
   @media screen and (max-width: 1440px) {
     width: 470px;
@@ -265,16 +260,16 @@ export const SubtitleText = styled.div`
 
 //   }
 
-//   @media screen and (max-width: 1024px) {
+  // @media screen and (max-width: 1024px) {
 
-//   }
+  // }
 
-//   @media screen and (max-width: 768px) {
+  // @media screen and (max-width: 768px) {
 
-//   }
+  // }
 
-//   @media screen and (max-width: 430px) {
-//   }
+  // @media screen and (max-width: 430px) {
+  // }
 
-//   @media screen and (max-width: 375px) {
-//   }
+  // @media screen and (max-width: 375px) {
+  // }

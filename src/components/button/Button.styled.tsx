@@ -5,6 +5,7 @@ import { color } from "../../theme/color";
 interface ButtonProps {
   bgColor: string;
   disabled?: boolean;
+  width?: string;
 }
 
 export const ButtonStyle = styled.button<ButtonProps>`
@@ -14,10 +15,9 @@ export const ButtonStyle = styled.button<ButtonProps>`
     props.disabled ? props.bgColor : `${color.white.white}`};
   padding: 12px 24px;
   border-radius: 16px;
-  box-shadow: ${(props) =>
-    props.disabled ? "none" : ` 0 0 2px 1px rgba(0, 0, 0, 0.3)`};
-  transform: ${(props) =>
-    props.disabled ? `scale(0.98)` : ` none`};
+  /* box-shadow: ${(props) =>
+    props.disabled ? "none" : ` 0 0 2px 1px rgba(0, 0, 0, 0.3)`}; */
+  transform: ${(props) => (props.disabled ? `scale(0.98)` : ` none`)};
   cursor: pointer;
   text-align: center;
   font-weight: 400;
@@ -29,6 +29,7 @@ export const ButtonStyle = styled.button<ButtonProps>`
   /* line-height: ${fonts.lineHeight.heading3}; */
   letter-spacing: ${fonts.letterSpacing.body};
   /* margin: 10px; */
+  width: ${(props) => props.width};
 
   &:hover {
     opacity: 0.9;
@@ -38,6 +39,31 @@ export const ButtonStyle = styled.button<ButtonProps>`
     transform: scale(0.98);
     box-shadow: none;
   }
+
+  @media screen and (max-width: 2560px) {
+    padding: 24px 48px;
+    font-size: ${fonts.fontSize.heading3};
+  }
+
+  @media screen and (max-width: 1440px) {
+    padding: 12px 24px;
+    font-size: ${fonts.fontSize.body2};
+  }
+
+  // @media screen and (max-width: 1024px) {
+
+  // }
+
+  @media screen and (max-width: 768px) {
+    padding: 10px 24px;
+    font-size: ${fonts.fontSize.body3};
+  }
+
+  // @media screen and (max-width: 430px) {
+  // }
+
+  // @media screen and (max-width: 375px) {
+  // }
 `;
 
-/* ${(props) => (props.isHovered ? "#EBF3FF" : "#ccd7e8")}; */
+
