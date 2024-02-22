@@ -5,12 +5,13 @@ import { color } from '../../theme/color'
 interface Props {
   disabled?: boolean;
   children: ReactNode;
-  width?: string;
+  width?: "100%";
+  onClick?: () => void;
 }
 
-const CustomButton = ({disabled, children, width}:Props) => {
+const CustomButton = ({disabled, children, width, onClick}:Props) => {
   return (
-    <ButtonStyle width={width} disabled={disabled} bgColor={`${color.primary.bleuDeFrance}`}>
+    <ButtonStyle width={width} disabled={disabled} bgColor={`${color.primary.bleuDeFrance}`} onClick={onClick}>
       {children}
     </ButtonStyle>
   );

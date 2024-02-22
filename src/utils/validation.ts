@@ -16,6 +16,13 @@ export const signUpSchema = z
 export type TSignUpSchema = z.infer<typeof signUpSchema>;
 
 
+export const emailSchema = z.object({
+  email: z.string().email()
+});
+
+export type TEmailSchema = z.infer<typeof emailSchema>
+
+
 
 // const validatePhoneNumber = (phoneNumber: string) => {
   //   const phoneNumberPattern = /^\d{10}$/; // Validates a 10-digit phone number

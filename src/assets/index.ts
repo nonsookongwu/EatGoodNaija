@@ -6,6 +6,8 @@ import signUp_image from './signUp.png'
 import userIcon from './profile.png'
 import emailIcon from './email.png'
 import passwordIcon from './password.png'
+import emailModal from "./emailModal.png"
+import passwordModal from "./passwordModal.png"
 
 
 export {
@@ -17,4 +19,6 @@ export {
   userIcon,
   emailIcon,
   passwordIcon,
+  emailModal,
+  passwordModal,
 };

@@ -37,7 +37,7 @@ const signUp = () => {
     reset,
     getValues,
     control,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isValid },
   } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
   
 
@@ -101,12 +101,7 @@ const signUp = () => {
             control={control}
             name="phoneNumber"
             rules={{ required: true }}
-            render={({ field }) => (
-              <PhoneInput
-                {...field}
-                country={"ng"}
-              />
-            )}
+            render={({ field }) => <PhoneInput {...field} country={"ng"} />}
           />
         </InputContainer>
         {errors.phoneNumber && (
@@ -176,9 +171,7 @@ const signUp = () => {
         )}
       </FieldContainer>
 
-      <CustomButton width="100%"
-        // disabled={disabled}
-      >
+      <CustomButton width="100%" disabled={!isValid}>
         Sign up
       </CustomButton>
       <DownTextContainer>
