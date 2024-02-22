@@ -1,14 +1,21 @@
 
 import './App.css'
-import LandingPage from './pages/LandingPage'
+import NavBar from './components/navbar';
+import { Outlet } from "react-router-dom";
+import { Container } from './pages/landing/Landing.styles';
+import Footer from './components/footer/Footer';
 
 function App() {
 
   return (
     <>
-      <LandingPage/>
+      <Container>
+        <NavBar />
+        <Outlet />
+      </Container>
+        <Footer />
     </>
-  )
+  );
 }
 
 export default App
