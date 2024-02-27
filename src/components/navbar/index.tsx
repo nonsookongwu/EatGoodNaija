@@ -51,7 +51,7 @@ const NavBar = () => {
           <MobileIcon onClick={handleOpenMobile}>
             {openMobile ? <LiaTimesSolid /> : <RxHamburgerMenu />}
           </MobileIcon>
-          <NavMenu mobileopen={openMobile} onClick={handleOpenMobile}>
+          <NavMenu $mobileopen={openMobile} onClick={handleOpenMobile}>
             {/* <NavLinks to={"/"}>
               <NavElements
                 onClick={() => handleActive(0)}
@@ -82,7 +82,7 @@ const NavBar = () => {
             {navElements.map((navElement, index) => (
               <NavLink to={`${navElement.href}`} key={navElement.label}>
                 <NavElements
-                  activeclass={active === index}
+                  $activeclass={active === index}
                   onClick={() => handleActive(index)}
                 >
                   {navElement.label}
@@ -107,5 +107,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-

@@ -6,6 +6,8 @@ import Contact from "../pages/Contact";
 import App from "../App";
 import SignUpPage from "../pages/signUp/SignUp";
 import EmailConfirmation from "../pages/resetPassword/EmailConfirmation";
+import LoginPage from "../pages/Login/LoginPage";
+import PasswordConfirmation from "../pages/resetPassword/PasswordConfirmation";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,9 @@ const router = createBrowserRouter([
     ],
   },
   {path: "/signup", element:<SignUpPage/>},
-  {path: "/email_confirm", element:<EmailConfirmation/>}
+  {path: "/login", element:<LoginPage/>},
+  {path: "/email_confirm", element:<EmailConfirmation/>},
+  {path: "/password_confirm", element:<PasswordConfirmation/>}
 ]);
 
 export default router;

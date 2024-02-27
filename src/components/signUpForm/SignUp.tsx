@@ -24,12 +24,19 @@ import {
   DownTextContainer,
 } from "./SignUp.styes";
 import "./signup.css";
+import { Link } from "react-router-dom";
 
 const signUp = () => {
-  const [disabled, setDisabled] = useState(true);
   const [PassWordvisibility, setPasswordVisibility] = useState(true);
   const [ConfirmPasswordvisibility, setConfirmPasswordVisibility] =
     useState(true);
+  
+  const handlePassword = () => {
+    setPasswordVisibility(!PassWordvisibility);
+  };
+  const handleConfirmPassword = () => {
+    setConfirmPasswordVisibility(!ConfirmPasswordvisibility);
+  };
 
   const {
     register,
@@ -41,12 +48,7 @@ const signUp = () => {
   } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
   
 
-  const handlePassword = () => {
-    setPasswordVisibility(!PassWordvisibility);
-  };
-  const handleConfirmPassword = () => {
-    setConfirmPasswordVisibility(!ConfirmPasswordvisibility);
-  };
+  
 
   const onSubmit = (data: TSignUpSchema) => {
     console.log(data);
@@ -54,9 +56,6 @@ const signUp = () => {
     reset();
   };
 
-  if (!errors) {
-    setDisabled(false);
-  }
 
   return (
     <FormWrapper onSubmit={handleSubmit(onSubmit)}>
@@ -176,7 +175,9 @@ const signUp = () => {
       </CustomButton>
       <DownTextContainer>
         <InfoText>Already have an account ?</InfoText>
-        <LinkText>Sign in here</LinkText>
+        <Link to={"/login"}>
+          <LinkText>Log in here</LinkText>
+        </Link>
       </DownTextContainer>
     </FormWrapper>
   );
