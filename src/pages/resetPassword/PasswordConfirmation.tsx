@@ -1,45 +1,33 @@
 import React, { useState } from "react";
+import { EGNLogo, passwordModal } from "../../assets";
+import EmailForm from "../../components/EmailConfirmation/EmailForm";
+import ResetPasswordModal from "../../components/EmailModal/AuthModal";
 import {
-  CompanyLogo,
   SignupContainer,
   SignupLeft,
   SignupRight,
   SignupInnerUp,
-  SignupInnerDown,
-  TopText,
-  GoogleAuthButton,
-  Divider,
-  Line,
-  DividerText,
+  CompanyLogo,
   TitleHolder,
+  TopText,
+  InfoText,
+  SignupInnerDown,
 } from "./EmailConfirmation.styles";
-import { EGNLogo } from "../../assets";
-import { FcGoogle } from "react-icons/fc";
-import SignUp from "../../components/signUpForm/SignUp";
-import EmailForm from "../../components/EmailConfirmation/EmailForm";
-import { InfoText } from "./EmailConfirmation.styles";
-import ResetPasswordModal from "../../components/EmailModal/AuthModal";
-import { emailModal } from "../../assets";
+import PasswordConfirm from "../../components/passwordConfirmation/PasswordConfirm";
 import { useNavigate } from "react-router-dom";
-import { TEmailSchema, emailSchema } from "../../utils/validation";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { TPasswordSchema } from "../../utils/validation";
 
-const EmailConfirmation = () => {
+const PasswordConfirmation = () => {
   const [toggleModal, setToggleModal] = useState(false);
-  const [formData, setFormData] = useState<TEmailSchema | null>(null);
+  const [formData, setFormData] = useState<TPasswordSchema | null>(null);
 
   const handleModal = () => {
     setToggleModal(!toggleModal);
   };
 
-  const { reset } = useForm<TEmailSchema>({
-    resolver: zodResolver(emailSchema),
-  });
-
   const navigate = useNavigate();
 
-  const onSubmit = (data: TEmailSchema) => {
+  const handleFormSubmit = (data: TPasswordSchema) => {
     setFormData(data);
     console.log(data);
   };
@@ -49,16 +37,16 @@ const EmailConfirmation = () => {
       // Use formData for further processing if needed
       console.log(formData);
     }
-    navigate("/password_confirm");
+    navigate("/login");
   };
 
   return (
     <>
       {toggleModal && (
         <ResetPasswordModal
-          imageUrl={emailModal}
+          imageUrl={passwordModal}
           buttonText="Continue"
-          modalText="Email sent Successfully"
+          modalText="Password sent Successfully"
           onCloseModal={handleModal}
           onClickButton={handleSubmitFromModal}
         />
@@ -70,14 +58,17 @@ const EmailConfirmation = () => {
             <CompanyLogo src={EGNLogo} />
             <TitleHolder>
               <TopText>Reset your password</TopText>
-              <InfoText>
+              {/* <InfoText>
                 Enter your email below and we’ll send you instructions on how to
                 reset your password.
-              </InfoText>
+              </InfoText> */}
             </TitleHolder>
           </SignupInnerUp>
           <SignupInnerDown>
-            <EmailForm toggleModal={handleModal} onSubmitForm={onSubmit} />
+            <PasswordConfirm
+              toggleModal={handleModal}
+              onSubmitForm={handleFormSubmit}
+            />
           </SignupInnerDown>
         </SignupRight>
       </SignupContainer>
@@ -85,4 +76,4 @@ const EmailConfirmation = () => {
   );
 };
 
-export default EmailConfirmation;
+export default PasswordConfirmation;

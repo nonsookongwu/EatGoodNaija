@@ -29,3 +29,16 @@ export type TEmailSchema = z.infer<typeof emailSchema>
 
   //   return phoneNumberPattern.test(phoneNumber);
   // };
+
+
+export const passwordSchema = z
+  .object({
+    password: z.string().min(8, "password must be 8 characters"),
+    confirmPassword: z.string(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "password doesnt match confirm password",
+    path: ["confirmPassword"],
+  });
+
+  export type TPasswordSchema = z.infer<typeof passwordSchema>;

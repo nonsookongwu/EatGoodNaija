@@ -1,9 +1,9 @@
-import styled from "styled-components"
+import styled from "styled-components";
 import { signUp_image } from "../../assets";
 import { fonts } from "../../theme/fonts";
 import { color } from "../../theme/color";
 
-export const SignupContainer = styled.div`
+export const LoginContainer = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -11,19 +11,17 @@ export const SignupContainer = styled.div`
   align-items: center;
 
   @media screen and (max-width: 768px) {
-    height: 1050px;
+    height: 850px;
   }
 
-   @media screen and (max-width: 430px) {
-    height: 940px;
-   }
+  // @media screen and (max-width: 430px) {
+  // }
 
-   @media screen and (max-width: 375px) {
-    height: 850px;
-   }
+  // @media screen and (max-width: 375px) {
+  // }
 `;
 
-export const SignupLeft = styled.div`
+export const LoginLeft = styled.div`
   width: 65.28%;
   height: 100%;
   background-image: url(${signUp_image});
@@ -48,7 +46,7 @@ export const SignupLeft = styled.div`
   }
 `;
 
-export const SignupRight = styled.div`
+export const LoginRight = styled.div`
   width: 34.72%;
   height: 100%;
   /* background: red; */
@@ -79,7 +77,7 @@ export const CompanyLogo = styled.img`
   width: auto;
 `;
 
-export const SignupInnerUp = styled.div`
+export const LoginInnerUp = styled.div`
   width: 51.2%;
   height: 9.44%;
   display: flex;
@@ -90,7 +88,7 @@ export const SignupInnerUp = styled.div`
   /* border: 2px solid yellowgreen; */
 `;
 
-export const SignupInnerDown = styled.div`
+export const LoginInnerDown = styled.div`
   width: 87.2%;
   height: 77.89%;
   display: flex;
@@ -114,7 +112,6 @@ export const TopText = styled.div`
   /* border: 2px solid blue; */
 
   @media screen and (max-width: 1440px) {
-    
     font-size: ${fonts.fontSize.body2};
     line-height: ${fonts.lineHeight.body3};
   }
@@ -143,8 +140,6 @@ export const TopText = styled.div`
     line-height: ${fonts.lineHeight.body3};
   }
 `;
-
-
 
 export const GoogleAuthButton = styled.button`
   width: 100%;
@@ -176,8 +171,6 @@ export const GoogleAuthButton = styled.button`
   }
 `;
 
-
-
 export const Divider = styled.div`
   width: 100%;
   display: flex;
@@ -191,7 +184,6 @@ export const Line = styled.div`
   border: 1px solid ${color.black.cadetGrey};
 `;
 
-
 export const DividerText = styled.div`
   /* font-family: ${fonts.fontFamily.rubik}; */
   font-size: ${fonts.fontSize.body3};
@@ -199,4 +191,4 @@ export const DividerText = styled.div`
   line-height: ${fonts.lineHeight.footer1};
   letter-spacing: ${fonts.letterSpacing.body};
   color: ${color.black.cadetGrey};
-  `
+`;

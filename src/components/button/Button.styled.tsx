@@ -3,16 +3,16 @@ import { fonts } from "../../theme/fonts";
 import { color } from "../../theme/color";
 
 interface ButtonProps {
-  bgColor: string;
+  $bgColor: string;
   disabled?: boolean;
   width?: string;
 }
 
 export const ButtonStyle = styled.button<ButtonProps>`
   background-color: ${(props) =>
-    props.disabled ? `${color.primary.water}` : props.bgColor};
+    props.disabled ? `${color.primary.water}` : props.$bgColor};
   color: ${(props) =>
-    props.disabled ? props.bgColor : `${color.white.white}`};
+    props.disabled ? props.$bgColor : `${color.white.white}`};
   padding: 12px 24px;
   border-radius: 16px;
   /* box-shadow: ${(props) =>
@@ -65,5 +65,3 @@ export const ButtonStyle = styled.button<ButtonProps>`
   // @media screen and (max-width: 375px) {
   // }
 `;
-
-
