@@ -1,0 +1,43 @@
+.carousel {
+  color: #fff;
+
+  &Images {
+    background: black;
+
+    $img-opacity: 0.67;
+
+    @keyframes fade-in {
+      from {
+        opacity: 0.3;
+      }
+      to {
+        opacity: $img-opacity;
+      }
+    }
+
+    &Image {
+      display: none;
+      width: 100%;
+      height: 25rem;
+      object-fit: cover;
+      opacity: $img-opacity;
+      animation: fade-in 3s;
+    }
+
+    &Active {
+      display: block;
+    }
+  }
+
+  &Description {
+    position: absolute;
+    bottom: 12.5rem;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.875rem;
+  }
+}

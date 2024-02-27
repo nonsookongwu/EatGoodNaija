@@ -35,7 +35,7 @@ const SignUpPage = () => {
             <DividerText>OR</DividerText>
             <Line />
           </Divider>
-          <SignUp/>
+          <SignUp />
         </SignupInnerDown>
       </SignupRight>
     </SignupContainer>
