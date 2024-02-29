@@ -25,8 +25,9 @@ import {
   DownTextContainer,
 } from "./SignUp.styes";
 import "./signup.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import userService from "../../APIServices/userService";
+import Spinner from "../Spinner";
 
 const signUp = () => {
   const [PassWordvisibility, setPasswordVisibility] = useState(true);
@@ -49,17 +50,18 @@ const signUp = () => {
     formState: { errors, isSubmitting, isValid },
   } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
   
-
+const navigate = useNavigate()
   
 
   const onSubmit = (data: TSignUpSchema) => {
     console.log(data);
 
     userService
-      .addUser(data)
+      .signupUser(data)
       .then((res) => {
         // console.log(res.data.message)
         toast.success(res.data.message);
+        navigate("/login")
       })
       .catch((error) => {
         // console.log(error.response.data.error)
@@ -171,7 +173,7 @@ const signUp = () => {
       </FieldContainer>
 
       <CustomButton width="100%" disabled={!isValid}>
-        Sign up
+        Sign up {isSubmitting && <Spinner/>}
       </CustomButton>
       <DownTextContainer>
         <InfoText>Already have an account ?</InfoText>

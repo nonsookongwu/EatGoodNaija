@@ -24,18 +24,21 @@ import { useNavigate } from "react-router-dom";
 import { TEmailSchema, emailSchema } from "../../utils/validation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import userService from "../../APIServices/userService";
+import toast, {Toaster} from "react-hot-toast"
 
-const EmailConfirmation = () => {
+const ForgotPassword = () => {
   const [toggleModal, setToggleModal] = useState(false);
   const [formData, setFormData] = useState<TEmailSchema | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleModal = () => {
     setToggleModal(!toggleModal);
   };
 
-  const { reset } = useForm<TEmailSchema>({
-    resolver: zodResolver(emailSchema),
-  });
+  // const { reset } = useForm<TEmailSchema>({
+  //   resolver: zodResolver(emailSchema),
+  // });
 
   const navigate = useNavigate();
 
@@ -47,9 +50,24 @@ const EmailConfirmation = () => {
   const handleSubmitFromModal = () => {
     if (formData) {
       // Use formData for further processing if needed
+      setIsSubmitting(true)
       console.log(formData);
+      userService
+        .forgotPassword(formData)
+        .then((res) => {
+          console.log(res);
+          toast.success(res.data.message);
+          // navigate("/password_confirm");
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsSubmitting(false);
+          toast.error(error.response.data.message);
+
+          // toast.error(error.message);
+        });
     }
-    navigate("/password_confirm");
+    setToggleModal(!toggleModal);
   };
 
   return (
@@ -61,6 +79,7 @@ const EmailConfirmation = () => {
           modalText="Email sent Successfully"
           onCloseModal={handleModal}
           onClickButton={handleSubmitFromModal}
+          isSubmitting={isSubmitting}
         />
       )}
       <SignupContainer>
@@ -80,9 +99,10 @@ const EmailConfirmation = () => {
             <EmailForm toggleModal={handleModal} onSubmitForm={onSubmit} />
           </SignupInnerDown>
         </SignupRight>
+        <Toaster />
       </SignupContainer>
     </>
   );
 };
 
-export default EmailConfirmation;
+export default ForgotPassword;

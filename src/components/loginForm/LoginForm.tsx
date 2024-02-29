@@ -1,35 +1,35 @@
-import React, { useState } from 'react'
-import { Controller, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import toast, { Toaster } from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
-import PhoneInput from 'react-phone-input-2';
-import { isValid } from 'zod';
-import { userIcon, emailIcon, passwordIcon } from '../../assets';
+import { Link, useNavigate } from 'react-router-dom';
+import userService from '../../APIServices/userService';
+import { emailIcon, passwordIcon } from '../../assets';
 import { color } from '../../theme/color';
+import { TLoginSchema, loginSchema } from '../../utils/validation';
 import CustomButton from '../button';
 import {
-  FormWrapper,
-  FieldContainer,
-  Label,
-  InputContainer,
-  IconImg,
   CustomInput,
-  TextContainer,
-  InfoText,
-  ErrorText,
-  Icon,
   DownTextContainer,
-  LinkText,
+  ErrorText,
+  FieldContainer,
   ForgetPasswordTextContainer,
+  FormWrapper,
+  Icon,
+  IconImg,
+  InfoText,
+  InputContainer,
+  Label,
+  LinkText
 } from "./LoginForm.styles";
-import { zodResolver } from '@hookform/resolvers/zod';
-import { TSignUpSchema, signUpSchema } from '../../utils/validation';
-import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
 
 
 const [PassWordvisibility, setPasswordVisibility] = useState(true);
 
+  const navigate = useNavigate()
 const {
   register,
   handleSubmit,
@@ -37,14 +37,30 @@ const {
   getValues,
   control,
   formState: { errors, isSubmitting, isValid },
-} = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
+} = useForm<TLoginSchema>({ resolver: zodResolver(loginSchema) });
 
 const handlePassword = () => {
   setPasswordVisibility(!PassWordvisibility);
 };
 
-const onSubmit = (data: TSignUpSchema) => {
+const onSubmit = (data: TLoginSchema) => {
   console.log(data);
+
+  userService
+    .loginUser(data)
+    .then((res) => {
+      console.log(res)
+      toast.success(res.data.message);
+      setTimeout(() => {
+       navigate("/dashboard");
+          }, 3000);
+      
+    })
+    .catch((error) => {
+      console.log(error)
+      toast.error(error.response.data.message);
+      // toast.error(error.message);
+    });
 
   reset();
 };
@@ -52,7 +68,7 @@ const onSubmit = (data: TSignUpSchema) => {
 
 
   return (
-    <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+    <><FormWrapper onSubmit={handleSubmit(onSubmit)}>
       {/* email */}
       <FieldContainer>
         <Label>Email</Label>
@@ -61,8 +77,7 @@ const onSubmit = (data: TSignUpSchema) => {
           <CustomInput
             {...register("email")}
             type="email"
-            placeholder="SuccessMomodu@gmail.com"
-          />
+            placeholder="SuccessMomodu@gmail.com" />
         </InputContainer>
         {errors.email && <ErrorText>{`${errors.email.message}`}</ErrorText>}
       </FieldContainer>
@@ -75,19 +90,16 @@ const onSubmit = (data: TSignUpSchema) => {
           <CustomInput
             {...register("password")}
             type={PassWordvisibility ? "password" : "text"}
-            placeholder="*********"
-          />
+            placeholder="*********" />
           <Icon onClick={handlePassword}>
             {PassWordvisibility ? (
               <BsEyeFill
                 size={"20px"}
-                color={`${color.primary.bleuDeFrance}`}
-              />
+                color={`${color.primary.bleuDeFrance}`} />
             ) : (
               <BsEyeSlashFill
                 size={"20px"}
-                color={`${color.primary.bleuDeFrance}`}
-              />
+                color={`${color.primary.bleuDeFrance}`} />
             )}
           </Icon>
         </InputContainer>
@@ -110,7 +122,7 @@ const onSubmit = (data: TSignUpSchema) => {
           <LinkText>Forgot Password?</LinkText>
         </Link>
       </ForgetPasswordTextContainer>
-    </FormWrapper>
+    </FormWrapper><Toaster /></>
   );
 }
 

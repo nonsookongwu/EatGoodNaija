@@ -1,33 +1,41 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { passwordIcon } from "../../assets";
-import { color } from '../../theme/color';
-import { TPasswordSchema, passwordSchema } from '../../utils/validation';
-import CustomButton from '../button';
-import { Icon } from '../signUpForm/SignUp.styes';
-import { CustomInput, DownTextContainer, ErrorText, FieldContainer, FormWrapper, IconImg, InfoText, InputContainer, Label, LinkText } from './PasswordConfirm.styles';
-
+import { color } from "../../theme/color";
+import { TPasswordSchema, passwordSchema } from "../../utils/validation";
+import CustomButton from "../button";
+import { Icon } from "../signUpForm/SignUp.styes";
+import {
+  CustomInput,
+  DownTextContainer,
+  ErrorText,
+  FieldContainer,
+  FormWrapper,
+  IconImg,
+  InfoText,
+  InputContainer,
+  Label,
+  LinkText,
+} from "./PasswordConfirm.styles";
 
 interface Props {
   toggleModal: () => void;
   onSubmitForm: (data: TPasswordSchema) => void;
 }
 
-const PasswordConfirm = ({ toggleModal,  onSubmitForm }: Props) => {
+const PasswordConfirm = ({ toggleModal, onSubmitForm }: Props) => {
+  const [PassWordvisibility, setPasswordVisibility] = useState(true);
+  const [ConfirmPasswordvisibility, setConfirmPasswordVisibility] =
+    useState(true);
 
- const [PassWordvisibility, setPasswordVisibility] = useState(true);
- const [ConfirmPasswordvisibility, setConfirmPasswordVisibility] =
-   useState(true);
-
- const handlePassword = () => {
-   setPasswordVisibility(!PassWordvisibility);
- };
- const handleConfirmPassword = () => {
-   setConfirmPasswordVisibility(!ConfirmPasswordvisibility);
- };
-
+  const handlePassword = () => {
+    setPasswordVisibility(!PassWordvisibility);
+  };
+  const handleConfirmPassword = () => {
+    setConfirmPasswordVisibility(!ConfirmPasswordvisibility);
+  };
 
   const {
     register,
@@ -46,7 +54,6 @@ const PasswordConfirm = ({ toggleModal,  onSubmitForm }: Props) => {
 
   return (
     <FormWrapper onSubmit={handleSubmit(onSubmit)}>
-
       {/* password */}
       <FieldContainer>
         <Label>Password</Label>
@@ -82,7 +89,7 @@ const PasswordConfirm = ({ toggleModal,  onSubmitForm }: Props) => {
         <InputContainer>
           <IconImg src={passwordIcon} />
           <CustomInput
-            {...register("confirmPassword", {
+            {...register("confirm", {
               // required: "confirm password is required",
               // validate: (value: string) =>
               //   value === getValues("password") || "Passwords must match",
@@ -104,9 +111,7 @@ const PasswordConfirm = ({ toggleModal,  onSubmitForm }: Props) => {
             )}
           </Icon>
         </InputContainer>
-        {errors.confirmPassword && (
-          <ErrorText>{`${errors.confirmPassword.message}`}</ErrorText>
-        )}
+        {errors.confirm && <ErrorText>{`${errors.confirm.message}`}</ErrorText>}
       </FieldContainer>
 
       <CustomButton width="100%" disabled={!isValid} onClick={toggleModal}>
@@ -121,4 +126,4 @@ const PasswordConfirm = ({ toggleModal,  onSubmitForm }: Props) => {
   );
 };
 
-export default PasswordConfirm
+export default PasswordConfirm;

@@ -40,6 +40,8 @@ const EmailForm = ({ toggleModal, onSubmitForm }: Props) => {
     formState: { errors, isSubmitting, isValid },
   } = useForm<TEmailSchema>({ resolver: zodResolver(emailSchema) });
 
+  console.log(isSubmitting);
+
   const onSubmit = (data: TEmailSchema) => {
     onSubmitForm(data);
 

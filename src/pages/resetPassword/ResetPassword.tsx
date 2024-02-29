@@ -14,12 +14,17 @@ import {
   SignupInnerDown,
 } from "./EmailConfirmation.styles";
 import PasswordConfirm from "../../components/passwordConfirmation/PasswordConfirm";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { TPasswordSchema } from "../../utils/validation";
+import userService from "../../APIServices/userService";
+import toast, { Toaster } from "react-hot-toast";
 
-const PasswordConfirmation = () => {
+const ResetPassword = () => {
   const [toggleModal, setToggleModal] = useState(false);
   const [formData, setFormData] = useState<TPasswordSchema | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { id } = useParams();
 
   const handleModal = () => {
     setToggleModal(!toggleModal);
@@ -35,9 +40,24 @@ const PasswordConfirmation = () => {
   const handleSubmitFromModal = () => {
     if (formData) {
       // Use formData for further processing if needed
+setIsSubmitting(true)
       console.log(formData);
+      userService
+        .resetPassword(id, formData)
+        .then((res) => {
+          console.log(res);
+          toast.success(res.data.message);
+          setTimeout(() => {
+            navigate("/login");
+          }, 4000);
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsSubmitting(false)
+          toast.error(error.response.data.message);
+        });
     }
-    navigate("/login");
+    setToggleModal(!toggleModal);
   };
 
   return (
@@ -49,6 +69,7 @@ const PasswordConfirmation = () => {
           modalText="Password sent Successfully"
           onCloseModal={handleModal}
           onClickButton={handleSubmitFromModal}
+          isSubmitting={isSubmitting}
         />
       )}
       <SignupContainer>
@@ -71,9 +92,10 @@ const PasswordConfirmation = () => {
             />
           </SignupInnerDown>
         </SignupRight>
+        <Toaster />
       </SignupContainer>
     </>
   );
 };
 
-export default PasswordConfirmation;
+export default ResetPassword;
