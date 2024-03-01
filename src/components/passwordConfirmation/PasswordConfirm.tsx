@@ -19,13 +19,15 @@ import {
   Label,
   LinkText,
 } from "./PasswordConfirm.styles";
+import Spinner from "../Spinner";
 
 interface Props {
   toggleModal: () => void;
   onSubmitForm: (data: TPasswordSchema) => void;
+  isSubmitting: boolean;
 }
 
-const PasswordConfirm = ({ toggleModal, onSubmitForm }: Props) => {
+const PasswordConfirm = ({ toggleModal, onSubmitForm, isSubmitting }: Props) => {
   const [PassWordvisibility, setPasswordVisibility] = useState(true);
   const [ConfirmPasswordvisibility, setConfirmPasswordVisibility] =
     useState(true);
@@ -43,7 +45,7 @@ const PasswordConfirm = ({ toggleModal, onSubmitForm }: Props) => {
     reset,
     getValues,
     control,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isValid },
   } = useForm<TPasswordSchema>({ resolver: zodResolver(passwordSchema) });
 
   const onSubmit = (data: TPasswordSchema) => {
@@ -115,7 +117,7 @@ const PasswordConfirm = ({ toggleModal, onSubmitForm }: Props) => {
       </FieldContainer>
 
       <CustomButton width="100%" disabled={!isValid} onClick={toggleModal}>
-        Reset password
+        Reset password {isSubmitting && <Spinner/>}
       </CustomButton>
 
       {/* <DownTextContainer>

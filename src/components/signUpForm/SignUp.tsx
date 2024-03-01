@@ -33,6 +33,7 @@ const signUp = () => {
   const [PassWordvisibility, setPasswordVisibility] = useState(true);
   const [ConfirmPasswordvisibility, setConfirmPasswordVisibility] =
     useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const handlePassword = () => {
     setPasswordVisibility(!PassWordvisibility);
@@ -47,7 +48,7 @@ const signUp = () => {
     reset,
     getValues,
     control,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isValid },
   } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
   
 const navigate = useNavigate()
@@ -55,17 +56,22 @@ const navigate = useNavigate()
 
   const onSubmit = (data: TSignUpSchema) => {
     console.log(data);
-
+    setIsSubmitting(true)
     userService
       .signupUser(data)
       .then((res) => {
         // console.log(res.data.message)
         toast.success(res.data.message);
-        navigate("/login")
+        setIsSubmitting(false);
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
+        
       })
       .catch((error) => {
         // console.log(error.response.data.error)
         toast.error(error.response.data.error);
+        setIsSubmitting(false);
       });
 
     reset();

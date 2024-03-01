@@ -18,7 +18,6 @@ interface Props {
   modalText: string;
   buttonText: string;
   onClickButton: () => void;
-  isSubmitting: boolean;
 }
 
 const ResetPasswordModal = ({
@@ -27,7 +26,6 @@ const ResetPasswordModal = ({
   modalText,
   imageUrl,
   onClickButton,
-  isSubmitting
 }: Props) => {
 
   return (
@@ -36,7 +34,7 @@ const ResetPasswordModal = ({
         <TopImage src={imageUrl} />
         <ModalText>{modalText}</ModalText>
         <CustomButton width="100%" onClick={onClickButton}>
-          {buttonText}{" "} {isSubmitting && <Spinner/>}
+          {buttonText}
         </CustomButton>
       </ModalWrapper>
     </ModalBackground>

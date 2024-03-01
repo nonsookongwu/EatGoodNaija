@@ -20,6 +20,7 @@ import { DefaultTheme } from "styled-components";
 
 import { Link, NavLink } from "react-router-dom";
 import { color } from "../../theme/color";
+import useStorage from "../../hooks/useStorage";
 
 const NavBar = () => {
   const navElements = [
@@ -39,6 +40,13 @@ const NavBar = () => {
   const handleActive = (index: number) => {
     setActive(index);
     console.log(index);
+  };
+  const { savedToken } = useStorage();
+
+  const handleLogOut = () => {
+    // localStorage.removeItem("token");
+    localStorage.clear();
+    window.location.reload();
   };
 
   return (
@@ -96,9 +104,13 @@ const NavBar = () => {
             </MobileButton>
           </NavMenu>
           <DesktopButton>
-            <Link to={"/signup"}>
-              <CustomButton children="Sign Up" />
-            </Link>
+            {savedToken ? (
+              <CustomButton children="Log out" onClick={handleLogOut} />
+            ) : (
+              <Link to={"/login"}>
+                <CustomButton children="Login" />
+              </Link>
+            )}
           </DesktopButton>
         </Navigation>
       </NavContainer>

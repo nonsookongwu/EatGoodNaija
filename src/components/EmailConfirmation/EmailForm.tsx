@@ -24,23 +24,25 @@ import {
   LinkText,
 } from "../signUpForm/SignUp.styes";
 import { Link } from "react-router-dom";
+import Spinner from "../Spinner";
 
 interface Props {
   toggleModal: () => void;
   onSubmitForm: (data: TEmailSchema) => void;
+  isSubmitting: boolean;
 }
 
-const EmailForm = ({ toggleModal, onSubmitForm }: Props) => {
+const EmailForm = ({ toggleModal, onSubmitForm, isSubmitting }: Props) => {
   const {
     register,
     handleSubmit,
     reset,
     getValues,
     control,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isValid },
   } = useForm<TEmailSchema>({ resolver: zodResolver(emailSchema) });
 
-  console.log(isSubmitting);
+ 
 
   const onSubmit = (data: TEmailSchema) => {
     onSubmitForm(data);
@@ -65,7 +67,7 @@ const EmailForm = ({ toggleModal, onSubmitForm }: Props) => {
           {errors.email && <ErrorText>{`${errors.email.message}`}</ErrorText>}
         </FieldContainer>
         <CustomButton width="100%" disabled={!isValid} onClick={toggleModal}>
-          Send reset instructions
+          Send reset instructions {isSubmitting && <Spinner/>}
         </CustomButton>
       </FormWrapper>
 

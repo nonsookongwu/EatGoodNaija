@@ -47,9 +47,10 @@ setIsSubmitting(true)
         .then((res) => {
           console.log(res);
           toast.success(res.data.message);
+          setIsSubmitting(false);
           setTimeout(() => {
             navigate("/login");
-          }, 4000);
+          }, 3000);
         })
         .catch((error) => {
           console.log(error);
@@ -69,7 +70,6 @@ setIsSubmitting(true)
           modalText="Password sent Successfully"
           onCloseModal={handleModal}
           onClickButton={handleSubmitFromModal}
-          isSubmitting={isSubmitting}
         />
       )}
       <SignupContainer>
@@ -89,6 +89,7 @@ setIsSubmitting(true)
             <PasswordConfirm
               toggleModal={handleModal}
               onSubmitForm={handleFormSubmit}
+              isSubmitting={isSubmitting}
             />
           </SignupInnerDown>
         </SignupRight>

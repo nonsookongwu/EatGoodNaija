@@ -57,6 +57,7 @@ const ForgotPassword = () => {
         .then((res) => {
           console.log(res);
           toast.success(res.data.message);
+          setIsSubmitting(false);
           // navigate("/password_confirm");
         })
         .catch((error) => {
@@ -79,7 +80,6 @@ const ForgotPassword = () => {
           modalText="Email sent Successfully"
           onCloseModal={handleModal}
           onClickButton={handleSubmitFromModal}
-          isSubmitting={isSubmitting}
         />
       )}
       <SignupContainer>
@@ -96,7 +96,7 @@ const ForgotPassword = () => {
             </TitleHolder>
           </SignupInnerUp>
           <SignupInnerDown>
-            <EmailForm toggleModal={handleModal} onSubmitForm={onSubmit} />
+            <EmailForm toggleModal={handleModal} onSubmitForm={onSubmit} isSubmitting={isSubmitting} />
           </SignupInnerDown>
         </SignupRight>
         <Toaster />
