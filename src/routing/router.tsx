@@ -11,6 +11,7 @@ import ResetPassword from "../pages/resetPassword/ResetPassword";
 import Dashboard from "../pages/dashboard/Dashboard";
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoutes from "./PrivateRoutes";
+import CategoryPage from "../pages/category/CategoryPage";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
     element: <PrivateRoutes />,
     children: [{ path: "/dashboard", element: <Dashboard /> }],
   },
+  { path: "/user_role", element: <CategoryPage /> },
   { path: "/signup", element: <SignUpPage /> },
   { path: "/login", element: <LoginPage /> },
   { path: "/dashboard", element: <Dashboard /> },

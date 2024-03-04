@@ -98,9 +98,13 @@ const NavBar = () => {
               </NavLink>
             ))}
             <MobileButton>
-              <Link to={"/signup"}>
-                <CustomButton children="Sign Up" />
-              </Link>
+              {savedToken ? (
+                <CustomButton children="Log out" onClick={handleLogOut} />
+              ) : (
+                <Link to={"/login"}>
+                  <CustomButton children="Login" />
+                </Link>
+              )}
             </MobileButton>
           </NavMenu>
           <DesktopButton>
