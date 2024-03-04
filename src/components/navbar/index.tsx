@@ -1,24 +1,22 @@
-import React, { useState } from "react";
-import { FaTimes, FaBars } from "react-icons/fa";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { useState } from "react";
 import { LiaTimesSolid } from "react-icons/lia";
 import { IconContext } from "react-icons/lib";
-import {
-  Logo,
-  NavContainer,
-  MobileIcon,
-  NavElements,
-  NavMenu,
-  Navigation,
-  DesktopButton,
-  NavLinks,
-  MobileButton,
-} from "./Navbar.styles";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { EGNLogo } from "../../assets";
 import CustomButton from "../button";
-import { DefaultTheme } from "styled-components";
+import {
+  DesktopButton,
+  Logo,
+  MobileButton,
+  MobileIcon,
+  NavContainer,
+  NavElements,
+  NavMenu,
+  Navigation
+} from "./Navbar.styles";
 
 import { Link, NavLink } from "react-router-dom";
+import useStorage from "../../hooks/useStorage";
 import { color } from "../../theme/color";
 
 const NavBar = () => {
@@ -39,6 +37,13 @@ const NavBar = () => {
   const handleActive = (index: number) => {
     setActive(index);
     console.log(index);
+  };
+  const { savedToken } = useStorage();
+
+  const handleLogOut = () => {
+    // localStorage.removeItem("token");
+    localStorage.clear();
+    window.location.reload();
   };
 
   return (
@@ -90,15 +95,23 @@ const NavBar = () => {
               </NavLink>
             ))}
             <MobileButton>
-              <Link to={"/signup"}>
-                <CustomButton children="Sign Up" />
-              </Link>
+              {savedToken ? (
+                <CustomButton children="Log out" onClick={handleLogOut} />
+              ) : (
+                <Link to={"/login"}>
+                  <CustomButton children="Login" />
+                </Link>
+              )}
             </MobileButton>
           </NavMenu>
           <DesktopButton>
-            <Link to={"/signup"}>
-              <CustomButton children="Sign Up" />
-            </Link>
+            {savedToken ? (
+              <CustomButton children="Log out" onClick={handleLogOut} />
+            ) : (
+              <Link to={"/login"}>
+                <CustomButton children="Login" />
+              </Link>
+            )}
           </DesktopButton>
         </Navigation>
       </NavContainer>

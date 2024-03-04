@@ -1,37 +1,38 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { Link, useNavigate } from "react-router-dom";
+import userService from "../../APIServices/userService";
 import { emailIcon, passwordIcon, userIcon } from "../../assets";
-import toast, { Toaster } from "react-hot-toast";
 import { color } from "../../theme/color";
 import { TSignUpSchema, signUpSchema } from "../../utils/validation";
+import Spinner from "../Spinner";
 import CustomButton from "../button";
 import {
   CustomInput,
+  DownTextContainer,
   ErrorText,
+  FieldContainer,
   FormWrapper,
-  FullNameContainer,
   Icon,
   IconImg,
+  InfoText,
   InputContainer,
   Label,
-  FieldContainer,
-  InfoText,
-  TextContainer,
   LinkText,
-  DownTextContainer,
+  TextContainer
 } from "./SignUp.styes";
 import "./signup.css";
-import { Link } from "react-router-dom";
-import userService from "../../APIServices/userService";
 
 const signUp = () => {
   const [PassWordvisibility, setPasswordVisibility] = useState(true);
   const [ConfirmPasswordvisibility, setConfirmPasswordVisibility] =
     useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const handlePassword = () => {
     setPasswordVisibility(!PassWordvisibility);
@@ -44,26 +45,31 @@ const signUp = () => {
     register,
     handleSubmit,
     reset,
-    getValues,
     control,
-    formState: { errors, isSubmitting, isValid },
+    formState: { errors, isValid },
   } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
   
-
+const navigate = useNavigate()
   
 
   const onSubmit = (data: TSignUpSchema) => {
     console.log(data);
-
+    setIsSubmitting(true)
     userService
-      .addUser(data)
+      .signupUser(data)
       .then((res) => {
         // console.log(res.data.message)
         toast.success(res.data.message);
+        setIsSubmitting(false);
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
+        
       })
       .catch((error) => {
         // console.log(error.response.data.error)
         toast.error(error.response.data.error);
+        setIsSubmitting(false);
       });
 
     reset();
@@ -171,7 +177,7 @@ const signUp = () => {
       </FieldContainer>
 
       <CustomButton width="100%" disabled={!isValid}>
-        Sign up
+        Sign up {isSubmitting && <Spinner/>}
       </CustomButton>
       <DownTextContainer>
         <InfoText>Already have an account ?</InfoText>

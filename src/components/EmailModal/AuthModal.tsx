@@ -1,14 +1,10 @@
-import React from "react";
+import CustomButton from "../button";
 import {
   ModalBackground,
+  ModalText,
   ModalWrapper,
   TopImage,
-  ModalText,
 } from "./Modal.styles";
-import { emailModal } from "../../assets";
-import CustomButton from "../button";
-import { useNavigate } from "react-router-dom";
-import { TEmailSchema, TPasswordSchema } from "../../utils/validation";
 
 interface Props {
   onCloseModal: () => void;
@@ -23,7 +19,7 @@ const ResetPasswordModal = ({
   buttonText,
   modalText,
   imageUrl,
-  onClickButton
+  onClickButton,
 }: Props) => {
 
   return (

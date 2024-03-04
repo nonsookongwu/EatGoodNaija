@@ -5,14 +5,19 @@ import Menu from "../pages/Menu";
 import Contact from "../pages/Contact";
 import App from "../App";
 import SignUpPage from "../pages/signUp/SignUp";
-import EmailConfirmation from "../pages/resetPassword/EmailConfirmation";
+import ForgotPassword from "../pages/resetPassword/ForgotPassword";
 import LoginPage from "../pages/Login/LoginPage";
-import PasswordConfirmation from "../pages/resetPassword/PasswordConfirmation";
+import ResetPassword from "../pages/resetPassword/ResetPassword";
+import Dashboard from "../pages/dashboard/Dashboard";
+import ErrorPage from "../pages/ErrorPage";
+import PrivateRoutes from "./PrivateRoutes";
+import CategoryPage from "../pages/category/CategoryPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       { path: "", element: <LandingPage /> },
       { path: "services", element: <Services /> },
@@ -20,10 +25,16 @@ const router = createBrowserRouter([
       { path: "contact", element: <Contact /> },
     ],
   },
-  {path: "/signup", element:<SignUpPage/>},
-  {path: "/login", element:<LoginPage/>},
-  {path: "/email_confirm", element:<EmailConfirmation/>},
-  {path: "/password_confirm", element:<PasswordConfirmation/>}
+  {
+    element: <PrivateRoutes />,
+    children: [{ path: "/dashboard", element: <Dashboard /> }],
+  },
+  { path: "/user_role", element: <CategoryPage /> },
+  { path: "/signup", element: <SignUpPage /> },
+  { path: "/login", element: <LoginPage /> },
+  { path: "/dashboard", element: <Dashboard /> },
+  { path: "/forgot-password", element: <ForgotPassword /> },
+  { path: "/reset-password/:id", element: <ResetPassword /> },
 ]);
 
 export default router;

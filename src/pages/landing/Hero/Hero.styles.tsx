@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { fonts } from "../../../theme/fonts";
+import { heroImage_Large } from "../../../assets";
 import { color } from "../../../theme/color";
-import { heroImage, heroImage_medium, heroImage_Large } from "../../../assets";
+import { fonts } from "../../../theme/fonts";
 
 export const HeroContainer = styled.div`
   /* border: 2px solid blueviolet; */

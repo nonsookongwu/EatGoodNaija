@@ -1,7 +1,6 @@
-import React, { ReactNode } from "react";
-import { ButtonStyle } from "./Button.styled";
+import { ReactNode } from "react";
 import { color } from "../../theme/color";
-import { TEmailSchema } from "../../utils/validation";
+import { ButtonStyle } from "./Button.styled";
 
 interface Props {
   disabled?: boolean;

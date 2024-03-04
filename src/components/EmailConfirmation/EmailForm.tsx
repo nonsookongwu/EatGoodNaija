@@ -1,15 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "react-phone-input-2/lib/style.css";
+import { Link } from "react-router-dom";
 import { emailIcon } from "../../assets";
 import {
   TEmailSchema,
-  TSignUpSchema,
-  emailSchema,
-  signUpSchema,
+  emailSchema
 } from "../../utils/validation";
-import ResetPasswordModal from "../EmailModal/AuthModal";
+import Spinner from "../Spinner";
 import CustomButton from "../button";
 import {
   CustomInput,
@@ -23,22 +21,23 @@ import {
   Label,
   LinkText,
 } from "../signUpForm/SignUp.styes";
-import { Link } from "react-router-dom";
 
 interface Props {
   toggleModal: () => void;
   onSubmitForm: (data: TEmailSchema) => void;
+  isSubmitting: boolean;
 }
 
-const EmailForm = ({ toggleModal, onSubmitForm }: Props) => {
+const EmailForm = ({ toggleModal, onSubmitForm, isSubmitting }: Props) => {
   const {
     register,
     handleSubmit,
     reset,
-    getValues,
-    control,
-    formState: { errors, isSubmitting, isValid },
+    
+    formState: { errors, isValid },
   } = useForm<TEmailSchema>({ resolver: zodResolver(emailSchema) });
+
+ 
 
   const onSubmit = (data: TEmailSchema) => {
     onSubmitForm(data);
@@ -63,7 +62,7 @@ const EmailForm = ({ toggleModal, onSubmitForm }: Props) => {
           {errors.email && <ErrorText>{`${errors.email.message}`}</ErrorText>}
         </FieldContainer>
         <CustomButton width="100%" disabled={!isValid} onClick={toggleModal}>
-          Send reset instructions
+          Send reset instructions {isSubmitting && <Spinner/>}
         </CustomButton>
       </FormWrapper>
 

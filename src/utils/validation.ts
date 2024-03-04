@@ -15,30 +15,33 @@ export const signUpSchema = z
 
 export type TSignUpSchema = z.infer<typeof signUpSchema>;
 
-
-export const emailSchema = z.object({
-  email: z.string().email()
+export const loginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6, "password must be 6 characters"),
 });
 
-export type TEmailSchema = z.infer<typeof emailSchema>
+export type TLoginSchema = z.infer<typeof loginSchema>;
 
+export const emailSchema = z.object({
+  email: z.string().email(),
+});
 
+export type TEmailSchema = z.infer<typeof emailSchema>;
 
 // const validatePhoneNumber = (phoneNumber: string) => {
-  //   const phoneNumberPattern = /^\d{10}$/; // Validates a 10-digit phone number
+//   const phoneNumberPattern = /^\d{10}$/; // Validates a 10-digit phone number
 
-  //   return phoneNumberPattern.test(phoneNumber);
-  // };
-
+//   return phoneNumberPattern.test(phoneNumber);
+// };
 
 export const passwordSchema = z
   .object({
     password: z.string().min(8, "password must be 8 characters"),
-    confirmPassword: z.string(),
+    confirm: z.string(),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine((data) => data.password === data.confirm, {
     message: "password doesnt match confirm password",
     path: ["confirmPassword"],
   });
 
-  export type TPasswordSchema = z.infer<typeof passwordSchema>;
+export type TPasswordSchema = z.infer<typeof passwordSchema>;
