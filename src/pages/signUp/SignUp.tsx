@@ -1,20 +1,19 @@
-import React from 'react'
+import { FcGoogle } from "react-icons/fc";
+import { EGNLogo } from '../../assets';
+import SignUp from '../../components/signUpForm/SignUp';
 import {
   CompanyLogo,
+  Divider,
+  DividerText,
+  GoogleAuthButton,
+  Line,
   SignupContainer,
+  SignupInnerDown,
+  SignupInnerUp,
   SignupLeft,
   SignupRight,
-  SignupInnerUp,
-  SignupInnerDown,
   TopText,
-  GoogleAuthButton,
-  Divider,
-  Line,
-  DividerText,
 } from "./SignUp.styles";
-import { EGNLogo } from '../../assets'
-import { FcGoogle } from "react-icons/fc";
-import SignUp from '../../components/signUpForm/SignUp';
 
 const SignUpPage = () => {
   return (

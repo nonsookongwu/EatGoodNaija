@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
-import { CompanyLogo, Divider, DividerText, GoogleAuthButton, Line, LoginContainer, LoginInnerDown, LoginInnerUp, LoginLeft, LoginRight, TopText } from './categoryPage.styles';
-import { FcGoogle } from 'react-icons/fc';
+import { useState } from 'react';
 import { EGNLogo } from '../../assets';
-import LoginForm from '../../components/loginForm/LoginForm';
-import CategoryForm from '../../components/categorySelect/CategoryForm';
 import LoadingModal from '../../components/EmailModal/LoadingModal';
+import CategoryForm from '../../components/categorySelect/CategoryForm';
+import { CompanyLogo, LoginContainer, LoginInnerDown, LoginInnerUp, LoginLeft, LoginRight, TopText } from './categoryPage.styles';
 
 const CategoryPage = () => {
     const [toggleModal, setToggleModal] = useState(false);

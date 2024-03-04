@@ -1,6 +1,4 @@
-import React, { useContext, useState } from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
-import { UserContext } from '../context/UserContext';
+import { Navigate, Outlet } from 'react-router-dom';
 import useStorage from '../hooks/useStorage';
 
 const PrivateRoutes = () => {

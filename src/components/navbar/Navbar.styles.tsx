@@ -1,7 +1,7 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { fonts } from "../../theme/fonts";
 import { color } from "../../theme/color";
-import { Link, NavLink } from "react-router-dom";
+import { fonts } from "../../theme/fonts";
 
 export const NavContainer = styled.nav`
   /* background-color: red; */

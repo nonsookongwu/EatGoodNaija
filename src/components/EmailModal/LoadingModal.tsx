@@ -1,6 +1,5 @@
-import React from 'react'
-import { ModalBackground } from './Modal.styles'
 import Spinner from '../Spinner'
+import { ModalBackground } from './Modal.styles'
 
 const LoadingModal = () => {
   return (

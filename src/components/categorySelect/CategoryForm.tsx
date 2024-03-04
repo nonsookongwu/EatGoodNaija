@@ -1,8 +1,7 @@
-import React, { SetStateAction, useState } from 'react'
-import { CustomSelect, DownTextContainer, FieldContainer, FormWrapper, InfoText, InputContainer, Label, LinkText, Options } from './CategoryForm.styles'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import CustomButton from '../button'
-import { useForm } from 'react-hook-form'
+import { CustomSelect, DownTextContainer, FieldContainer, FormWrapper, InfoText, InputContainer, Label, LinkText, Options } from './CategoryForm.styles'
 
 interface Props {
   setModalToggle: () => void;
@@ -10,7 +9,7 @@ interface Props {
 
 const CategoryForm = ({setModalToggle}:Props) => {
     const [role, setRole] = useState<string | null>()
-    const [isLoading, setIsLoading] = useState(false)
+    // const [isLoading, setIsLoading] = useState(false)
 
  const navigate = useNavigate()
 // console.log(role)

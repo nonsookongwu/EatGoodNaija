@@ -1,4 +1,5 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
+import CustomButton from '../../../components/button';
 import {
   HeroContainer,
   HeroLeftContainer,
@@ -7,11 +8,9 @@ import {
   HeroText2,
   HeroTextHolder,
   HeroTextHolder2,
-  SubtitleText,
   HeroTitleHolder,
+  SubtitleText,
 } from "./Hero.styles";
-import CustomButton from '../../../components/button';
-import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (

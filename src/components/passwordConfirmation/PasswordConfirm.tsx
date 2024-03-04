@@ -5,21 +5,18 @@ import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import { passwordIcon } from "../../assets";
 import { color } from "../../theme/color";
 import { TPasswordSchema, passwordSchema } from "../../utils/validation";
+import Spinner from "../Spinner";
 import CustomButton from "../button";
 import { Icon } from "../signUpForm/SignUp.styes";
 import {
   CustomInput,
-  DownTextContainer,
   ErrorText,
   FieldContainer,
   FormWrapper,
   IconImg,
-  InfoText,
   InputContainer,
-  Label,
-  LinkText,
+  Label
 } from "./PasswordConfirm.styles";
-import Spinner from "../Spinner";
 
 interface Props {
   toggleModal: () => void;
@@ -43,8 +40,6 @@ const PasswordConfirm = ({ toggleModal, onSubmitForm, isSubmitting }: Props) => 
     register,
     handleSubmit,
     reset,
-    getValues,
-    control,
     formState: { errors, isValid },
   } = useForm<TPasswordSchema>({ resolver: zodResolver(passwordSchema) });
 

@@ -1,33 +1,32 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { Link, useNavigate } from "react-router-dom";
+import userService from "../../APIServices/userService";
 import { emailIcon, passwordIcon, userIcon } from "../../assets";
-import toast, { Toaster } from "react-hot-toast";
 import { color } from "../../theme/color";
 import { TSignUpSchema, signUpSchema } from "../../utils/validation";
+import Spinner from "../Spinner";
 import CustomButton from "../button";
 import {
   CustomInput,
+  DownTextContainer,
   ErrorText,
+  FieldContainer,
   FormWrapper,
-  FullNameContainer,
   Icon,
   IconImg,
+  InfoText,
   InputContainer,
   Label,
-  FieldContainer,
-  InfoText,
-  TextContainer,
   LinkText,
-  DownTextContainer,
+  TextContainer
 } from "./SignUp.styes";
 import "./signup.css";
-import { Link, useNavigate } from "react-router-dom";
-import userService from "../../APIServices/userService";
-import Spinner from "../Spinner";
 
 const signUp = () => {
   const [PassWordvisibility, setPasswordVisibility] = useState(true);
@@ -46,7 +45,6 @@ const signUp = () => {
     register,
     handleSubmit,
     reset,
-    getValues,
     control,
     formState: { errors, isValid },
   } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });

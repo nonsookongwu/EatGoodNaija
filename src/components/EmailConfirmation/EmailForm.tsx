@@ -1,15 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "react-phone-input-2/lib/style.css";
+import { Link } from "react-router-dom";
 import { emailIcon } from "../../assets";
 import {
   TEmailSchema,
-  TSignUpSchema,
-  emailSchema,
-  signUpSchema,
+  emailSchema
 } from "../../utils/validation";
-import ResetPasswordModal from "../EmailModal/AuthModal";
+import Spinner from "../Spinner";
 import CustomButton from "../button";
 import {
   CustomInput,
@@ -23,8 +21,6 @@ import {
   Label,
   LinkText,
 } from "../signUpForm/SignUp.styes";
-import { Link } from "react-router-dom";
-import Spinner from "../Spinner";
 
 interface Props {
   toggleModal: () => void;
@@ -37,8 +33,7 @@ const EmailForm = ({ toggleModal, onSubmitForm, isSubmitting }: Props) => {
     register,
     handleSubmit,
     reset,
-    getValues,
-    control,
+    
     formState: { errors, isValid },
   } = useForm<TEmailSchema>({ resolver: zodResolver(emailSchema) });
 

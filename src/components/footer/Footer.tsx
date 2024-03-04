@@ -1,12 +1,11 @@
-import React from "react";
 import {
+  Facebook,
   FooterContainer,
   FooterLeft,
   IconContainer,
-  Facebook,
-  Twitter,
   Instagram,
   LinkedIn,
+  Twitter,
 } from "./Footer.styles";
 
 const Footer = () => {

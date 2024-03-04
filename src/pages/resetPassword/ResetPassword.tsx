@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
+import userService from "../../APIServices/userService";
 import { EGNLogo, passwordModal } from "../../assets";
-import EmailForm from "../../components/EmailConfirmation/EmailForm";
 import ResetPasswordModal from "../../components/EmailModal/AuthModal";
+import PasswordConfirm from "../../components/passwordConfirmation/PasswordConfirm";
+import { TPasswordSchema } from "../../utils/validation";
 import {
+  CompanyLogo,
   SignupContainer,
+  SignupInnerDown,
+  SignupInnerUp,
   SignupLeft,
   SignupRight,
-  SignupInnerUp,
-  CompanyLogo,
   TitleHolder,
-  TopText,
-  InfoText,
-  SignupInnerDown,
+  TopText
 } from "./EmailConfirmation.styles";
-import PasswordConfirm from "../../components/passwordConfirmation/PasswordConfirm";
-import { useNavigate, useParams } from "react-router-dom";
-import { TPasswordSchema } from "../../utils/validation";
-import userService from "../../APIServices/userService";
-import toast, { Toaster } from "react-hot-toast";
 
 const ResetPassword = () => {
   const [toggleModal, setToggleModal] = useState(false);

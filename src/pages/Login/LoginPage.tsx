@@ -1,8 +1,7 @@
-import React from 'react'
 import { FcGoogle } from 'react-icons/fc';
 import { EGNLogo } from '../../assets';
-import { LoginContainer, LoginRight, LoginInnerUp, CompanyLogo, TopText, LoginInnerDown, GoogleAuthButton, Divider, Line, DividerText, LoginLeft } from './LoginPage.styles';
 import LoginForm from '../../components/loginForm/LoginForm';
+import { CompanyLogo, Divider, DividerText, GoogleAuthButton, Line, LoginContainer, LoginInnerDown, LoginInnerUp, LoginLeft, LoginRight, TopText } from './LoginPage.styles';
 
 const LoginPage = () => {
   return (

@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { fonts } from "../../theme/fonts";
 import { color } from "../../theme/color";
-import PhoneInput from "react-phone-input-2";
+import { fonts } from "../../theme/fonts";
 
 export const FormWrapper = styled.form`
   width: 100%;

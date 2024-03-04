@@ -1,16 +1,10 @@
-import React from "react";
+import CustomButton from "../button";
 import {
   ModalBackground,
+  ModalText,
   ModalWrapper,
   TopImage,
-  ModalText,
 } from "./Modal.styles";
-import CircularProgress from "@mui/material/CircularProgress";
-import { emailModal } from "../../assets";
-import CustomButton from "../button";
-import { useNavigate } from "react-router-dom";
-import { TEmailSchema, TPasswordSchema } from "../../utils/validation";
-import Spinner from "../Spinner";
 
 interface Props {
   onCloseModal: () => void;

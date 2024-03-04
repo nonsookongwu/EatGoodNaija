@@ -35,8 +35,6 @@ const {
   register,
   handleSubmit,
   reset,
-  getValues,
-  control,
   formState: { errors, isValid },
 } = useForm<TLoginSchema>({ resolver: zodResolver(loginSchema) });
 

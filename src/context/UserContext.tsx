@@ -1,6 +1,4 @@
-import React, { Dispatch, PropsWithChildren, SetStateAction, createContext, useEffect, useState } from 'react'
-import { TSignUpSchema } from '../utils/validation';
-import userService from '../APIServices/userService';
+import { Dispatch, PropsWithChildren, SetStateAction, createContext, useState } from 'react';
 
 export interface UserAuth{
   
@@ -26,8 +24,8 @@ export const UserContext = createContext({} as UserContext);
 const UserContextProvider = ({ children }: PropsWithChildren) => {
     
 const [user, setUser] = useState<UserAuth | null>(null);
-const [error, setError] = useState("");
-const [loading, setLoading] = useState(true);
+// const [error, setError] = useState("");
+// const [loading, setLoading] = useState(true);
 
 //     useEffect(() => {
 //     if (!user) {
