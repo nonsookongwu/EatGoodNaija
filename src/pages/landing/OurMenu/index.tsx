@@ -14,13 +14,13 @@ const OurMenu = () => {
     const [currentSlide, setCurrentSlide] = useState(0)
 
     useEffect(() => {
-        let slideInterval = 5
-        slideInterval = setInterval(() => {
-            setCurrentSlide(
-                currentSlide === slideData.length - 1 ? 0 : currentSlide + 1
-            )
-        }, 5000)
-        return () => clearInterval(slideInterval)
+        // let slideInterval = 5
+        // slideInterval = setInterval(() => {
+        //     setCurrentSlide(
+        //         currentSlide === slideData.length - 1 ? 0 : currentSlide + 1
+        //     )
+        // }, 5000)
+        // return () => clearInterval(slideInterval)
     }, [currentSlide])
 
     return (
