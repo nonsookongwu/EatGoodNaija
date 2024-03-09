@@ -124,7 +124,7 @@ export const HeroTextHolder2 = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  gap: 20px;
+  gap: 15px;
 `;
 
 export const HeroText = styled.div`
@@ -153,7 +153,7 @@ export const HeroText = styled.div`
 
   @media screen and (max-width: 430px) {
     font-size: ${fonts.fontSize.heading1};
-    line-height: ${fonts.lineHeight.heading1};
+    line-height: ${fonts.lineHeight.heading2};
   }
 
   @media screen and (max-width: 375px) {
@@ -195,8 +195,8 @@ justify-content: flex-start; */
   }
 
   @media screen and (max-width: 430px) {
-    font-size: ${fonts.fontSize.heading1};
-    line-height: ${fonts.lineHeight.heading1};
+    font-size: ${fonts.fontSize.display2};
+    line-height: ${fonts.lineHeight.heading2};
   }
 
   @media screen and (max-width: 375px) {
