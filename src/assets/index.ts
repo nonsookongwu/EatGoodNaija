@@ -8,6 +8,9 @@ import emailIcon from './email.png'
 import passwordIcon from './password.png'
 import emailModal from "./emailModal.png"
 import passwordModal from "./passwordModal.png"
+import easyToOrder from './easytoOrder.png'
+import fastDelivery from './delivery.png'
+import bestQuality from "./waiters.png"
 
 
 export {
@@ -20,5 +23,5 @@ export {
   emailIcon,
   passwordIcon,
   emailModal,
-  passwordModal,
+  passwordModal, easyToOrder, fastDelivery, bestQuality
 };
