@@ -15,11 +15,12 @@ import {
   Navigation
 } from "./Navbar.styles";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useStorage from "../../hooks/useStorage";
 import { color } from "../../theme/color";
 
 const NavBar = () => {
+  const navigate = useNavigate()
   const navElements = [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
@@ -43,7 +44,8 @@ const NavBar = () => {
   const handleLogOut = () => {
     // localStorage.removeItem("token");
     localStorage.clear();
-    window.location.reload();
+    // window.location.reload();
+    navigate("/login")
   };
 
   return (

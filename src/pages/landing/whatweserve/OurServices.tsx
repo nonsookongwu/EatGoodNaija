@@ -1,15 +1,14 @@
-import React from "react";
-import {
-  ServiceSectionContainer,
-  TitleText,
-  ServiceBoxContainer,
-  SmallBoxes,
-  SmallBoxImg,
-  SmallTextHolder,
-  SmallBoxTitletext,
-  SmallBoxSubtitleText,
-} from "./WhatWeServe.style";
 import { bestQuality, easyToOrder, fastDelivery } from "../../../assets";
+import {
+  ServiceBoxContainer,
+  ServiceSectionContainer,
+  SmallBoxImg,
+  SmallBoxSubtitleText,
+  SmallBoxTitletext,
+  SmallBoxes,
+  SmallTextHolder,
+  TitleText,
+} from "./WhatWeServe.style";
 
 const OurServices = () => {
 
