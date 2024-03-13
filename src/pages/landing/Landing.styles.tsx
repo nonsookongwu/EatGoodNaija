@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 
 export const Container = styled.div`
-  /* background-color: rebeccapurple; */
+  
   width: 100%;
   height: auto;
   padding-left: 140px;
