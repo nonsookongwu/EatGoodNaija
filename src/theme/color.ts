@@ -16,5 +16,6 @@ export const color = {
   },
   white: {
     white: "#fff",
+  chineseWhite: "#E0E0E0",
   },
 };
