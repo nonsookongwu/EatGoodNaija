@@ -1,4 +1,5 @@
 import Hero from "./Hero";
+import OurMenuSection from "./ourMenuSection";
 import OurServices from "./whatweserve/OurServices";
 
 const LandingPage = () => {
@@ -6,6 +7,7 @@ const LandingPage = () => {
     <div>
       <Hero />
       <OurServices />
+      <OurMenuSection/>
     </div>
   );
 };
