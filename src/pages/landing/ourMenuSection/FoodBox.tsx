@@ -1,13 +1,11 @@
-import React from 'react'
 import {
   FoodSlide,
+  RightCarouselIcon,
   SlideTextholder1,
   SlideTextholder2,
+  SlideTextholder3,
   SliderLabelText,
   SliderSmallText,
-  RightCarouselIcon,
-  SlideTextholder3,
-  // Overlay,
 } from "./OurMenuSection.styles";
 
 interface Props {

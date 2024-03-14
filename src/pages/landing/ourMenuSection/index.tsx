@@ -1,27 +1,21 @@
+import { useState } from "react";
+import { meat, rawFood, riceDishes, soups } from "../../../assets";
+import FoodBox from "./FoodBox";
 import {
-  OurMenuContainer,
-  TopContainer,
-  TitleText,
+  BottomContainer,
   CarouselButtonHolder,
   CarouselButtons,
-  LeftCarouselIcon,
-  RightCarouselIcon,
-  BottomContainer,
   DishListContainer,
-  Menutext,
   DishListItem,
   FoodListIcons,
+  LeftCarouselIcon,
+  Menutext,
+  OurMenuContainer,
+  RightCarouselIcon,
   SliderContainer,
-  FoodSlide,
-  SlideTextholder1,
-  SlideTextholder2,
-  SliderLabelText,
-  SliderSmallText,
-  // InnerSliderContainer,
+  TitleText,
+  TopContainer
 } from "./OurMenuSection.styles";
-import { riceDishes, soups, meat, rawFood } from "../../../assets";
-import { useState } from "react";
-import FoodBox from "./FoodBox";
 import { FoodMenuData, foodMenuData } from "./foodMenuData";
 
 const OurMenuSection = () => {

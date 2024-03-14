@@ -7,29 +7,24 @@ import {
   grilledCorn,
   beefStew,
   ofeAkwu,
-  egusiSoup,
-  ohaSoup,
-  okraSoup,
+  // egusiSoup,
+  // ohaSoup,
+  // okraSoup,
   tomatoes,
-  riceStew,
+  // riceStew,
   roastedChicken,
-  roastedCorn,
+  // roastedCorn,
   roastedFish,
-  roastedYam,
+  // roastedYam,
   suya,
-  tomatoStew,
+  // tomatoStew,
   sweetPotatoes,
   yamTubers,
   vegetableRice,
   yam,
 } from "../../../assets";
 
-//  const menuData = [
-//    { label: "Rice Dishes", img: riceDishes },
-//    { label: "Soups and Stews", img: soups },
-//    { label: "Grilled and Roasted Foods", img: meat },
-//    { label: "Raw Foods", img: rawFood },
-//  ];
+
 
 export interface FoodMenuData {
   name: string;
