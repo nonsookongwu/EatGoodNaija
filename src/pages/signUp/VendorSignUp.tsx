@@ -1,6 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
 import { EGNLogo } from "../../assets";
-import UsersignUp from "../../components/signUpForm/UserSignUp";
+import VendorSignUp from "../../components/signUpForm/VendorSignUpform";
 import {
   CompanyLogo,
   Divider,
@@ -14,7 +14,6 @@ import {
   SignupRight,
   TopText,
 } from "./SignUp.styles";
-import VendorSignUp from "../../components/signUpForm/VendorSignUpform";
 
 const VendorSignUpPage = () => {
   return (
