@@ -5,7 +5,7 @@ import { color } from "../../theme/color";
 
 export const SignupContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 1024px;
   display: flex;
   justify-content: center;
   align-items: center;

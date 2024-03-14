@@ -3,10 +3,7 @@ import { useForm } from "react-hook-form";
 import "react-phone-input-2/lib/style.css";
 import { Link } from "react-router-dom";
 import { emailIcon } from "../../assets";
-import {
-  TEmailSchema,
-  emailSchema
-} from "../../utils/validation";
+import { TEmailSchema, emailSchema } from "../../utils/validation";
 import Spinner from "../Spinner";
 import CustomButton from "../button";
 import {
@@ -33,11 +30,9 @@ const EmailForm = ({ toggleModal, onSubmitForm, isSubmitting }: Props) => {
     register,
     handleSubmit,
     reset,
-    
+
     formState: { errors, isValid },
   } = useForm<TEmailSchema>({ resolver: zodResolver(emailSchema) });
-
- 
 
   const onSubmit = (data: TEmailSchema) => {
     onSubmitForm(data);
@@ -62,7 +57,7 @@ const EmailForm = ({ toggleModal, onSubmitForm, isSubmitting }: Props) => {
           {errors.email && <ErrorText>{`${errors.email.message}`}</ErrorText>}
         </FieldContainer>
         <CustomButton width="100%" disabled={!isValid} onClick={toggleModal}>
-          Send reset instructions {isSubmitting && <Spinner/>}
+          Send reset instructions {isSubmitting && <Spinner />}
         </CustomButton>
       </FormWrapper>
 

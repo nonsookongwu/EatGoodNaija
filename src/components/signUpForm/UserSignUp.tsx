@@ -28,7 +28,7 @@ import {
 } from "./SignUp.styes";
 import "./signup.css";
 
-const signUp = () => {
+const UsersignUp = () => {
   const [PassWordvisibility, setPasswordVisibility] = useState(true);
   const [ConfirmPasswordvisibility, setConfirmPasswordVisibility] =
     useState(true);
@@ -53,10 +53,11 @@ const navigate = useNavigate()
   
 
   const onSubmit = (data: TSignUpSchema) => {
-    console.log(data);
+    const newData = {...data, role: "customer"}
+    console.log(newData);
     setIsSubmitting(true)
     userService
-      .signupUser(data)
+      .signupUser(newData)
       .then((res) => {
         // console.log(res.data.message)
         toast.success(res.data.message);
@@ -64,7 +65,6 @@ const navigate = useNavigate()
         setTimeout(() => {
           navigate("/login");
         }, 3000);
-        
       })
       .catch((error) => {
         // console.log(error.response.data.error)
@@ -191,4 +191,4 @@ const navigate = useNavigate()
   );
 };
 
-export default signUp;
+export default UsersignUp;

@@ -15,7 +15,7 @@ import {
   FormWrapper,
   IconImg,
   InputContainer,
-  Label
+  Label,
 } from "./PasswordConfirm.styles";
 
 interface Props {
@@ -24,7 +24,11 @@ interface Props {
   isSubmitting: boolean;
 }
 
-const PasswordConfirm = ({ toggleModal, onSubmitForm, isSubmitting }: Props) => {
+const PasswordConfirm = ({
+  toggleModal,
+  onSubmitForm,
+  isSubmitting,
+}: Props) => {
   const [PassWordvisibility, setPasswordVisibility] = useState(true);
   const [ConfirmPasswordvisibility, setConfirmPasswordVisibility] =
     useState(true);
@@ -112,7 +116,7 @@ const PasswordConfirm = ({ toggleModal, onSubmitForm, isSubmitting }: Props) => 
       </FieldContainer>
 
       <CustomButton width="100%" disabled={!isValid} onClick={toggleModal}>
-        Reset password {isSubmitting && <Spinner/>}
+        Reset password {isSubmitting && <Spinner />}
       </CustomButton>
 
       {/* <DownTextContainer>

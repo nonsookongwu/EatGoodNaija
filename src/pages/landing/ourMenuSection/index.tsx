@@ -14,7 +14,7 @@ import {
   RightCarouselIcon,
   SliderContainer,
   TitleText,
-  TopContainer
+  TopContainer,
 } from "./OurMenuSection.styles";
 import { FoodMenuData, foodMenuData } from "./foodMenuData";
 
@@ -64,12 +64,12 @@ const OurMenuSection = () => {
           {menuData.map((item, index) => (
             <DishListItem
               key={item.img}
-              active={activeLink === index}
+              $active={activeLink === index}
               onClick={() => handleActiveFood(index)}
             >
               <FoodListIcons src={item.img} />
               <Menutext
-                active={activeLink === index}
+                $active={activeLink === index}
                 onClick={() => handleActiveFood(index)}
               >
                 {item.label}
@@ -78,15 +78,15 @@ const OurMenuSection = () => {
           ))}
         </DishListContainer>
         <SliderContainer>
-            {filteredFood.map((food) => (
-              <FoodBox
-                key={food.img}
-                foodLabel={food.name}
-                foodPrice={food.price}
-                img={food.img}
-                weight={food.weight}
-              />
-            ))}
+          {filteredFood.map((food) => (
+            <FoodBox
+              key={food.img}
+              foodLabel={food.name}
+              foodPrice={food.price}
+              img={food.img}
+              weight={food.weight}
+            />
+          ))}
         </SliderContainer>
       </BottomContainer>
     </OurMenuContainer>

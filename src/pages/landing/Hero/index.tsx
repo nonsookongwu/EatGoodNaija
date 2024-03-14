@@ -31,7 +31,7 @@ const Hero = () => {
           Our job is to filling your tummy with delicious food and with fast and
           free delivery
         </SubtitleText>
-        <Link to={"/signup"}>
+        <Link to={"/user_role"}>
           <CustomButton>Get started</CustomButton>
         </Link>
       </HeroLeftContainer>

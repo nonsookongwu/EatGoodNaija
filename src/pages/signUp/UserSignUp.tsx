@@ -1,6 +1,6 @@
 import { FcGoogle } from "react-icons/fc";
-import { EGNLogo } from '../../assets';
-import SignUp from '../../components/signUpForm/SignUp';
+import { EGNLogo } from "../../assets";
+import UsersignUp from "../../components/signUpForm/UserSignUp";
 import {
   CompanyLogo,
   Divider,
@@ -15,7 +15,7 @@ import {
   TopText,
 } from "./SignUp.styles";
 
-const SignUpPage = () => {
+const UserSignUpPage = () => {
   return (
     <SignupContainer>
       <SignupLeft />
@@ -34,11 +34,11 @@ const SignUpPage = () => {
             <DividerText>OR</DividerText>
             <Line />
           </Divider>
-          <SignUp/>
+          <UsersignUp />
         </SignupInnerDown>
       </SignupRight>
     </SignupContainer>
   );
-}
+};
 
-export default SignUpPage
+export default UserSignUpPage;

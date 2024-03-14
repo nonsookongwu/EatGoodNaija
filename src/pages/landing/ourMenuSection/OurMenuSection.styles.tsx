@@ -133,10 +133,10 @@ export const CarouselButtons = styled.button`
   }
 
   @media screen and (max-width: 375px) {
-        width: 38%;
+    width: 38%;
   }
   @media screen and (max-width: 320px) {
-        width: 37%;
+    width: 37%;
   }
 `;
 
@@ -217,9 +217,9 @@ export const DishListContainer = styled.div`
     padding: 0 5px 0 5px;
   }
 
-   @media screen and (max-width: 430px) {
+  @media screen and (max-width: 430px) {
     gap: 0;
-   }
+  }
 
   // @media screen and (max-width: 375px) {
   // }
@@ -251,18 +251,18 @@ export const SliderContainer = styled.div`
     width: 100%;
   }
 
-   @media screen and (max-width: 430px) {
+  @media screen and (max-width: 430px) {
     width: 100%;
     padding: 20px 20px 20px 55px;
     box-sizing: border-box;
-   }
+  }
 
-   @media screen and (max-width: 375px) {
+  @media screen and (max-width: 375px) {
     padding: 20px 20px 20px 110px;
-   }
-   @media screen and (max-width: 320px) {
+  }
+  @media screen and (max-width: 320px) {
     padding: 20px 20px 20px 150px;
-   }
+  }
 `;
 // export const InnerSliderContainer = styled.div`
 //   border: 2px solid green;
@@ -288,7 +288,7 @@ export const SliderContainer = styled.div`
 // `;
 
 interface DishListProps {
-  active: boolean;
+  $active: boolean;
 }
 export const DishListItem = styled.div<DishListProps>`
   display: flex;
@@ -296,7 +296,7 @@ export const DishListItem = styled.div<DishListProps>`
   align-items: center;
   gap: 25px;
   background-color: ${(props) =>
-    props.active ? `${color.primary.bleuDeFrance}` : "none"};
+    props.$active ? `${color.primary.bleuDeFrance}` : "none"};
   height: 89px;
   width: auto;
   padding-left: 20px;
@@ -317,13 +317,13 @@ export const DishListItem = styled.div<DishListProps>`
     gap: 15px;
   }
 
-   @media screen and (max-width: 430px) {
+  @media screen and (max-width: 430px) {
     flex-direction: column;
     gap: 5px;
     height: 80px;
     border-radius: 10px;
     padding: 0 10px 0 10px;
-   }
+  }
 
   // @media screen and (max-width: 375px) {
   // }
@@ -350,7 +350,7 @@ export const FoodListIcons = styled.img`
 `;
 
 interface FoodSlideProps {
-  imgUrl: string;
+  $imgUrl: string;
 }
 
 export const FoodSlide = styled.div<FoodSlideProps>`
@@ -358,7 +358,7 @@ export const FoodSlide = styled.div<FoodSlideProps>`
   min-width: 536px;
   height: 100%;
   border-radius: 30px;
-  background-image: url(${(props) => props.imgUrl});
+  background-image: url(${(props) => props.$imgUrl});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -383,9 +383,9 @@ export const FoodSlide = styled.div<FoodSlideProps>`
 
   // }
 
-   @media screen and (max-width: 430px) {
+  @media screen and (max-width: 430px) {
     min-width: 200px;
-   }
+  }
 
   // @media screen and (max-width: 375px) {
   // }
@@ -423,10 +423,10 @@ export const SlideTextholder1 = styled.div`
 
   // }
 
-   @media screen and (max-width: 430px) {
+  @media screen and (max-width: 430px) {
     width: 150px;
     height: 61px;
-   }
+  }
 
   // @media screen and (max-width: 375px) {
   // }
@@ -443,7 +443,7 @@ export const SlideTextholder2 = styled.div`
     width: 150px;
     height: 31px;
     align-items: flex-end;
-   }
+  }
 
   // @media screen and (max-width: 375px) {
   // }
@@ -469,11 +469,11 @@ export const SlideTextholder3 = styled.div`
 
   // }
 
-   @media screen and (max-width: 430px) {
+  @media screen and (max-width: 430px) {
     width: 150px;
     height: 31px;
     padding-left: 5px;
-   }
+  }
 
   // @media screen and (max-width: 375px) {
   // }
@@ -524,7 +524,7 @@ export const Menutext = styled.span<DishListProps>`
   line-height: ${fonts.lineHeight.body3};
   letter-spacing: ${fonts.letterSpacing.body};
   color: ${(props) =>
-    props.active ? `${color.white.white}` : `${color.black.richBlack}`};
+    props.$active ? `${color.white.white}` : `${color.black.richBlack}`};
 
   @media screen and (max-width: 1440px) {
     font-size: ${fonts.fontSize.body1};

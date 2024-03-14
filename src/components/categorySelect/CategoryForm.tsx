@@ -22,10 +22,10 @@ const CategoryForm = ({setModalToggle}:Props) => {
           setModalToggle()
          
       }, 3000);
-        if (role === "Customer") {
-          navigate("/signup");
+        if (role === "customer") {
+          navigate("/signup_user");
         } else {
-          navigate("/");
+          navigate("/signup_vendor");
         }
       
     
@@ -40,8 +40,8 @@ const CategoryForm = ({setModalToggle}:Props) => {
             {/* <IconImg src={emailIcon} /> */}
             <CustomSelect onChange={(e) => setRole(e.target.value)}>
               <Options>select a category</Options>
-              <Options value={"Vendor"}>Vendor</Options>
-              <Options value={"Customer"}>Customer</Options>
+              <Options value={"vendor"}>Vendor</Options>
+              <Options value={"customer"}>Customer</Options>
             </CustomSelect>
           </InputContainer>
           {/* {errors.email && <ErrorText>{`${errors.email.message}`}</ErrorText>} */}
