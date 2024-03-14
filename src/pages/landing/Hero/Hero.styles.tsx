@@ -200,7 +200,7 @@ justify-content: flex-start; */
   }
 
   @media screen and (max-width: 375px) {
-    font-size: ${fonts.fontSize.heading1};
+    font-size: ${fonts.fontSize.display2};
     line-height: ${fonts.lineHeight.heading2};
   }
   @media screen and (max-width: 320px) {
