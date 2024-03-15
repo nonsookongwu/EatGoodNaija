@@ -37,6 +37,9 @@ class UserService {
   signupUser(user: TSignUpSchema) {
     return ApiClient.post("/auth/signup", user);
   }
+  signupVendor(user: TSignUpSchema) {
+    return ApiClient.post("/auth/vendor-signup", user);
+  }
 
   loginUser(user: TLoginSchema) {
     return ApiClient.post("/auth/login", user);

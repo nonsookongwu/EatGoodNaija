@@ -53,11 +53,10 @@ const navigate = useNavigate()
   
 
   const onSubmit = (data: TSignUpSchema) => {
-    const newData = {...data, role: "customer"}
-    console.log(newData);
+    // console.log(newData);
     setIsSubmitting(true)
     userService
-      .signupUser(newData)
+      .signupUser(data)
       .then((res) => {
         // console.log(res.data.message)
         toast.success(res.data.message);

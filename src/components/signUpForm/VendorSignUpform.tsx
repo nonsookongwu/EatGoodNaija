@@ -52,11 +52,10 @@ const VendorSignUp = () => {
   const navigate = useNavigate();
 
   const onSubmit = (data: TSignUpSchema) => {
-    const newData = { ...data, role: "vendor" };
-    console.log(newData);
+    // console.log(data);
     setIsSubmitting(true);
     userService
-      .signupUser(newData)
+      .signupVendor(data)
       .then((res) => {
         // console.log(res.data.message)
         toast.success(res.data.message);
