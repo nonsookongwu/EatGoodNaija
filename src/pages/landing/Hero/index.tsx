@@ -1,4 +1,5 @@
-import React from 'react'
+import { Link } from 'react-router-dom';
+import CustomButton from '../../../components/button';
 import {
   HeroContainer,
   HeroLeftContainer,
@@ -7,10 +8,9 @@ import {
   HeroText2,
   HeroTextHolder,
   HeroTextHolder2,
-  SubtitleText,
   HeroTitleHolder,
+  SubtitleText,
 } from "./Hero.styles";
-import CustomButton from '../../../components/button';
 
 const Hero = () => {
   return (
@@ -31,7 +31,9 @@ const Hero = () => {
           Our job is to filling your tummy with delicious food and with fast and
           free delivery
         </SubtitleText>
-        <CustomButton>Get started</CustomButton>
+        <Link to={"/user_role"}>
+          <CustomButton>Get started</CustomButton>
+        </Link>
       </HeroLeftContainer>
       <HeroRightContainer></HeroRightContainer>
     </HeroContainer>

@@ -5,7 +5,7 @@ import PhoneInput from "react-phone-input-2";
 
 export const FormWrapper = styled.form`
   width: 100%;
-  height: 100%;
+  height: auto;
   /* background: blue; */
   display: flex;
   flex-direction: column;
@@ -227,6 +227,7 @@ export const DownTextContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   gap: 5px;
   margin-top: 10px;
   @media screen and (max-width: 430px) {

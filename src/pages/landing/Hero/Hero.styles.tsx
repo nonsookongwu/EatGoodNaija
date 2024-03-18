@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { fonts } from "../../../theme/fonts";
+import { heroImage_Large } from "../../../assets";
 import { color } from "../../../theme/color";
-import { heroImage, heroImage_medium, heroImage_Large } from "../../../assets";
+import { fonts } from "../../../theme/fonts";
 
 export const HeroContainer = styled.div`
   /* border: 2px solid blueviolet; */
@@ -25,7 +25,7 @@ export const HeroContainer = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    height: 1036px;
+    height: 836px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -124,7 +124,7 @@ export const HeroTextHolder2 = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
-  gap: 20px;
+  gap: 15px;
 `;
 
 export const HeroText = styled.div`
@@ -153,7 +153,7 @@ export const HeroText = styled.div`
 
   @media screen and (max-width: 430px) {
     font-size: ${fonts.fontSize.heading1};
-    line-height: ${fonts.lineHeight.heading1};
+    line-height: ${fonts.lineHeight.heading2};
   }
 
   @media screen and (max-width: 375px) {
@@ -195,12 +195,12 @@ justify-content: flex-start; */
   }
 
   @media screen and (max-width: 430px) {
-    font-size: ${fonts.fontSize.heading1};
-    line-height: ${fonts.lineHeight.heading1};
+    font-size: ${fonts.fontSize.display2};
+    line-height: ${fonts.lineHeight.heading2};
   }
 
   @media screen and (max-width: 375px) {
-    font-size: ${fonts.fontSize.heading1};
+    font-size: ${fonts.fontSize.display2};
     line-height: ${fonts.lineHeight.heading2};
   }
   @media screen and (max-width: 320px) {

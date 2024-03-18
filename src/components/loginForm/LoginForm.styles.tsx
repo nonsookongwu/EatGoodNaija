@@ -224,9 +224,11 @@ export const TextContainer = styled.div`
 `;
 export const DownTextContainer = styled.div`
   width: 100%;
+  /* border: 2px solid red; */
   display: flex;
   justify-content: center;
-  gap: 5px;
+  align-items: flex-end;
+  gap: 3px;
   margin-top: 10px;
   @media screen and (max-width: 430px) {
     margin-top: 5px;
@@ -297,6 +299,7 @@ export const LinkText = styled.button`
   border: none;
   text-decoration: underline;
   cursor: pointer;
+  text-align: center;
 
   @media screen and (max-width: 2560px) {
     font-size: ${fonts.fontSize.body1};
@@ -310,5 +313,18 @@ export const LinkText = styled.button`
   @media screen and (max-width: 430px) {
     font-size: ${fonts.fontSize.footer1};
     line-height: ${fonts.lineHeight.footer2};
+  }
+`;
+
+export const ForgetPasswordTextContainer = styled.div`
+  width: 100%;
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 3px;
+  /* margin-top: 10px; */
+  @media screen and (max-width: 430px) {
+    margin-top: 5px;
   }
 `;

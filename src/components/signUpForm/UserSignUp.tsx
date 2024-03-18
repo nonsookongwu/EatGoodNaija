@@ -1,46 +1,39 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import { Link, useNavigate } from "react-router-dom";
+import userService from "../../APIServices/userService";
 import { emailIcon, passwordIcon, userIcon } from "../../assets";
 import { color } from "../../theme/color";
 import { TSignUpSchema, signUpSchema } from "../../utils/validation";
+import Spinner from "../Spinner";
 import CustomButton from "../button";
 import {
   CustomInput,
+  DownTextContainer,
   ErrorText,
+  FieldContainer,
   FormWrapper,
-  FullNameContainer,
   Icon,
   IconImg,
+  InfoText,
   InputContainer,
   Label,
-  FieldContainer,
-  InfoText,
-  TextContainer,
   LinkText,
-  DownTextContainer,
+  TextContainer
 } from "./SignUp.styes";
 import "./signup.css";
 
-const signUp = () => {
-  const [disabled, setDisabled] = useState(true);
+const UsersignUp = () => {
   const [PassWordvisibility, setPasswordVisibility] = useState(true);
   const [ConfirmPasswordvisibility, setConfirmPasswordVisibility] =
     useState(true);
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    getValues,
-    control,
-    formState: { errors, isSubmitting, isValid },
-  } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
-
   const handlePassword = () => {
     setPasswordVisibility(!PassWordvisibility);
   };
@@ -48,33 +41,56 @@ const signUp = () => {
     setConfirmPasswordVisibility(!ConfirmPasswordvisibility);
   };
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors, isValid },
+  } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
+  
+const navigate = useNavigate()
+  
+
   const onSubmit = (data: TSignUpSchema) => {
-    console.log(data);
+    // console.log(newData);
+    setIsSubmitting(true)
+    userService
+      .signupUser(data)
+      .then((res) => {
+        // console.log(res.data.message)
+        toast.success(res.data.message);
+        setIsSubmitting(false);
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
+      })
+      .catch((error) => {
+        // console.log(error.response.data.error)
+        toast.error(error.response.data.error);
+        setIsSubmitting(false);
+      });
 
     reset();
   };
 
-  if (!errors) {
-    setDisabled(false);
-  }
 
   return (
-    <FormWrapper onSubmit={handleSubmit(onSubmit)}>
+    <><FormWrapper onSubmit={handleSubmit(onSubmit)}>
       {/* fullname */}
       <FieldContainer>
         <Label>Full name</Label>
         <InputContainer>
           <IconImg src={userIcon} />
           <CustomInput
-            {...register("fullName")}
+            {...register("fullname")}
             type="text"
-            placeholder="Success Momodu"
-          />
+            placeholder="Success Momodu" />
         </InputContainer>
         <TextContainer>
           <InfoText>first name comes first</InfoText>
-          {errors.fullName && (
-            <ErrorText>{`${errors.fullName.message}`}</ErrorText>
+          {errors.fullname && (
+            <ErrorText>{`${errors.fullname.message}`}</ErrorText>
           )}
         </TextContainer>
       </FieldContainer>
@@ -87,8 +103,7 @@ const signUp = () => {
           <CustomInput
             {...register("email")}
             type="email"
-            placeholder="SuccessMomodu@gmail.com"
-          />
+            placeholder="SuccessMomodu@gmail.com" />
         </InputContainer>
         {errors.email && <ErrorText>{`${errors.email.message}`}</ErrorText>}
       </FieldContainer>
@@ -99,14 +114,11 @@ const signUp = () => {
         <InputContainer>
           <Controller
             control={control}
-            name="phoneNumber"
+            name="phone"
             rules={{ required: true }}
-            render={({ field }) => <PhoneInput {...field} country={"ng"} />}
-          />
+            render={({ field }) => <PhoneInput {...field} country={"ng"} />} />
         </InputContainer>
-        {errors.phoneNumber && (
-          <ErrorText>{`${errors.phoneNumber.message}`}</ErrorText>
-        )}
+        {errors.phone && <ErrorText>{`${errors.phone.message}`}</ErrorText>}
       </FieldContainer>
 
       {/* password */}
@@ -117,19 +129,16 @@ const signUp = () => {
           <CustomInput
             {...register("password")}
             type={PassWordvisibility ? "password" : "text"}
-            placeholder="*********"
-          />
+            placeholder="*********" />
           <Icon onClick={handlePassword}>
             {PassWordvisibility ? (
               <BsEyeFill
                 size={"20px"}
-                color={`${color.primary.bleuDeFrance}`}
-              />
+                color={`${color.primary.bleuDeFrance}`} />
             ) : (
               <BsEyeSlashFill
                 size={"20px"}
-                color={`${color.primary.bleuDeFrance}`}
-              />
+                color={`${color.primary.bleuDeFrance}`} />
             )}
           </Icon>
         </InputContainer>
@@ -144,42 +153,41 @@ const signUp = () => {
         <InputContainer>
           <IconImg src={passwordIcon} />
           <CustomInput
-            {...register("confirmPassword", {
+            {...register("confirm", {
               // required: "confirm password is required",
               // validate: (value: string) =>
               //   value === getValues("password") || "Passwords must match",
             })}
             type={ConfirmPasswordvisibility ? "password" : "text"}
-            placeholder="*********"
-          />
+            placeholder="*********" />
           <Icon onClick={handleConfirmPassword}>
             {ConfirmPasswordvisibility ? (
               <BsEyeFill
                 size={"20px"}
-                color={`${color.primary.bleuDeFrance}`}
-              />
+                color={`${color.primary.bleuDeFrance}`} />
             ) : (
               <BsEyeSlashFill
                 size={"20px"}
-                color={`${color.primary.bleuDeFrance}`}
-              />
+                color={`${color.primary.bleuDeFrance}`} />
             )}
           </Icon>
         </InputContainer>
-        {errors.confirmPassword && (
-          <ErrorText>{`${errors.confirmPassword.message}`}</ErrorText>
-        )}
+        {errors.confirm && <ErrorText>{`${errors.confirm.message}`}</ErrorText>}
       </FieldContainer>
 
       <CustomButton width="100%" disabled={!isValid}>
-        Sign up
+        Sign up {isSubmitting && <Spinner/>}
       </CustomButton>
       <DownTextContainer>
         <InfoText>Already have an account ?</InfoText>
-        <LinkText>Sign in here</LinkText>
+        <Link to={"/login"}>
+          <LinkText>Log in here</LinkText>
+        </Link>
       </DownTextContainer>
     </FormWrapper>
+      <Toaster />
+    </>
   );
 };
 
-export default signUp;
+export default UsersignUp;

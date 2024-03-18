@@ -5,20 +5,22 @@ import { color } from "../../theme/color";
 
 export const SignupContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 1024px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   @media screen and (max-width: 768px) {
-    height: 850px;
+    height: 1050px;
   }
 
-  // @media screen and (max-width: 430px) {
-  // }
+   @media screen and (max-width: 430px) {
+    height: 940px;
+   }
 
-  // @media screen and (max-width: 375px) {
-  // }
+   @media screen and (max-width: 375px) {
+    height: 850px;
+   }
 `;
 
 export const SignupLeft = styled.div`

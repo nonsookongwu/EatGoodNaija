@@ -1,27 +1,26 @@
-import React, { useState } from "react";
-import { FaTimes, FaBars } from "react-icons/fa";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { useState } from "react";
 import { LiaTimesSolid } from "react-icons/lia";
 import { IconContext } from "react-icons/lib";
-import {
-  Logo,
-  NavContainer,
-  MobileIcon,
-  NavElements,
-  NavMenu,
-  Navigation,
-  DesktopButton,
-  NavLinks,
-  MobileButton,
-} from "./Navbar.styles";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { EGNLogo } from "../../assets";
 import CustomButton from "../button";
-import { DefaultTheme } from "styled-components";
+import {
+  DesktopButton,
+  Logo,
+  MobileButton,
+  MobileIcon,
+  NavContainer,
+  NavElements,
+  NavMenu,
+  Navigation
+} from "./Navbar.styles";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useStorage from "../../hooks/useStorage";
 import { color } from "../../theme/color";
 
 const NavBar = () => {
+  const navigate = useNavigate()
   const navElements = [
     { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
@@ -40,6 +39,15 @@ const NavBar = () => {
     setActive(index);
     console.log(index);
   };
+  const { savedToken } = useStorage();
+
+  const handleLogOut = () => {
+    // localStorage.removeItem("token");
+    navigate("/login");
+    localStorage.clear();
+    // window.location.reload();
+    
+  };
 
   return (
     <IconContext.Provider value={{ color: `${color.primary.bleuDeFrance}` }}>
@@ -51,7 +59,7 @@ const NavBar = () => {
           <MobileIcon onClick={handleOpenMobile}>
             {openMobile ? <LiaTimesSolid /> : <RxHamburgerMenu />}
           </MobileIcon>
-          <NavMenu mobileopen={openMobile} onClick={handleOpenMobile}>
+          <NavMenu $mobileopen={openMobile} onClick={handleOpenMobile}>
             {/* <NavLinks to={"/"}>
               <NavElements
                 onClick={() => handleActive(0)}
@@ -82,7 +90,7 @@ const NavBar = () => {
             {navElements.map((navElement, index) => (
               <NavLink to={`${navElement.href}`} key={navElement.label}>
                 <NavElements
-                  activeclass={active === index}
+                  $activeclass={active === index}
                   onClick={() => handleActive(index)}
                 >
                   {navElement.label}
@@ -90,15 +98,23 @@ const NavBar = () => {
               </NavLink>
             ))}
             <MobileButton>
-              <Link to={"/signup"}>
-                <CustomButton children="Sign Up" />
-              </Link>
+              {savedToken ? (
+                <CustomButton children="Log out" onClick={handleLogOut} />
+              ) : (
+                <Link to={"/login"}>
+                  <CustomButton children="Login" />
+                </Link>
+              )}
             </MobileButton>
           </NavMenu>
           <DesktopButton>
-            <Link to={"/signup"}>
-              <CustomButton children="Sign Up" />
-            </Link>
+            {savedToken ? (
+              <CustomButton children="Log out" onClick={handleLogOut} />
+            ) : (
+              <Link to={"/login"}>
+                <CustomButton children="Login" />
+              </Link>
+            )}
           </DesktopButton>
         </Navigation>
       </NavContainer>
@@ -107,5 +123,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
-

@@ -1,7 +1,7 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { fonts } from "../../theme/fonts";
 import { color } from "../../theme/color";
-import { Link, NavLink } from "react-router-dom";
+import { fonts } from "../../theme/fonts";
 
 export const NavContainer = styled.nav`
   /* background-color: red; */
@@ -34,7 +34,7 @@ export const Navigation = styled.div`
 `;
 
 interface NavMenuProps {
-  mobileopen: boolean;
+  $mobileopen: boolean;
 }
 
 export const NavMenu = styled.ul<NavMenuProps>`
@@ -55,14 +55,14 @@ export const NavMenu = styled.ul<NavMenuProps>`
     height: 70vh;
     position: absolute;
     top: 80px;
-    left: ${(props) => (props.mobileopen ? 0 : "-100%")};
+    left: ${(props) => (props.$mobileopen ? 0 : "-100%")};
     opacity: 1;
     transition: all 0.5s ease;
     background: ${color.black.darkCharcoal};
     box-sizing: border-box;
     padding: 10px;
 
-    &:hover{
+    &:hover {
       background-color: ${color.primary.bleuDeFrance};
     }
   }
@@ -71,29 +71,27 @@ export const NavMenu = styled.ul<NavMenuProps>`
 export const MobileButton = styled.div`
   display: none;
 
-  @media screen and (max-width: 960px){
-display: block;
+  @media screen and (max-width: 960px) {
+    display: block;
   }
 `;
 
-
-
 interface NavElementProps {
-  activeclass: boolean;
+  $activeclass: boolean;
 }
 
 export const NavElements = styled.li<NavElementProps>`
   font-family: ${fonts.fontFamily.poppins};
   font-size: ${fonts.fontSize.body2};
   font-weight: ${(props) =>
-    props.activeclass
+    props.$activeclass
       ? `${fonts.fontWeight.regular}`
       : `${fonts.fontWeight.medium}`};
   line-height: ${fonts.lineHeight.body3};
   letter-spacing: ${fonts.letterSpacing.body};
   cursor: pointer;
   color: ${(props) =>
-    props.activeclass
+    props.$activeclass
       ? `${color.primary.bleuDeFrance}`
       : `${color.black.darkCharcoal}`};
   text-decoration: none !important;
@@ -136,7 +134,6 @@ export const NavLinks = styled(NavLink)`
     display: table;
     color: ${color.white.white};
   }
-
 `;
 
 export const MobileIcon = styled.div`

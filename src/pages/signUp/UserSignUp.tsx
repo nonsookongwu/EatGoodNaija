@@ -1,22 +1,21 @@
-import React from 'react'
+import { FcGoogle } from "react-icons/fc";
+import { EGNLogo } from "../../assets";
+import UsersignUp from "../../components/signUpForm/UserSignUp";
 import {
   CompanyLogo,
+  Divider,
+  DividerText,
+  GoogleAuthButton,
+  Line,
   SignupContainer,
+  SignupInnerDown,
+  SignupInnerUp,
   SignupLeft,
   SignupRight,
-  SignupInnerUp,
-  SignupInnerDown,
   TopText,
-  GoogleAuthButton,
-  Divider,
-  Line,
-  DividerText,
 } from "./SignUp.styles";
-import { EGNLogo } from '../../assets'
-import { FcGoogle } from "react-icons/fc";
-import SignUp from '../../components/signUpForm/SignUp';
 
-const SignUpPage = () => {
+const UserSignUpPage = () => {
   return (
     <SignupContainer>
       <SignupLeft />
@@ -35,11 +34,11 @@ const SignUpPage = () => {
             <DividerText>OR</DividerText>
             <Line />
           </Divider>
-          <SignUp/>
+          <UsersignUp />
         </SignupInnerDown>
       </SignupRight>
     </SignupContainer>
   );
-}
+};
 
-export default SignUpPage
+export default UserSignUpPage;
